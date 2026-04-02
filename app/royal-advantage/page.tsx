@@ -26,10 +26,11 @@ export default function RoyalAdvantagePage() {
         <section className="bg-gradient-to-br from-primary-950 via-primary-900 to-primary-700 text-white py-20">
           <div className="container-custom">
             <Reveal className="max-w-4xl text-center mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold mb-5">Give Your Child a Royal Advantage in Education</h1>
-              <p className="text-lg md:text-2xl text-white/85">
+              <h1 className="hero-page-title mb-5">Give Your Child a Royal Advantage in Education</h1>
+              <p className="hero-page-subtitle">
                 Enroll your child in a school that combines academic excellence, digital learning, and strong values
               </p>
+              <div className="hero-accent" />
             </Reveal>
           </div>
         </section>

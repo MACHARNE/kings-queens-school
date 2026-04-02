@@ -58,7 +58,7 @@ export default function VideoHero() {
       <div className="absolute inset-0 bg-gradient-to-r from-primary-950/92 via-primary-900/72 to-black/45" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.2),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.18),transparent_30%)]" />
 
-      <div className="relative z-10 container-custom min-h-screen flex items-center pt-28 pb-16">
+      <div className="relative z-10 container-custom min-h-screen flex items-center pt-32 pb-16">
         <div className="max-w-5xl text-white">
           <motion.div
             key={activeSlide.image}
@@ -66,9 +66,6 @@ export default function VideoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <div className="mb-5 inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-gold-400 shadow-[0_18px_44px_rgba(251,191,36,0.18)] backdrop-blur-md">
-              A premium, digitally-enabled Nigerian school preparing students for both local and global success.
-            </div>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               Raising Future Kings & Queens Through Excellence, Innovation & Character
             </h1>

@@ -35,11 +35,12 @@ export default function ParentPortalPage() {
         <section className="bg-gradient-to-br from-primary-900 to-primary-700 text-white py-20">
           <div className="container-custom">
             <Reveal className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Greater Visibility. Stronger Parent Partnership.</h1>
-              <p className="text-lg md:text-xl text-white/85">
+              <h1 className="hero-page-title mb-4">Greater Visibility. Stronger Parent Partnership.</h1>
+              <p className="hero-page-subtitle !mx-0">
                 The website brief calls for parent visibility as part of the digital learning advantage.
                 This page introduces the portal experience and reinforces that promise.
               </p>
+              <div className="hero-accent !mx-0" />
             </Reveal>
           </div>
         </section>

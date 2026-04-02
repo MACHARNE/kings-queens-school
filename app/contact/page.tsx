@@ -12,7 +12,8 @@ export default function Contact() {
         <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20">
           <div className="container-custom text-center">
             <Reveal>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+              <h1 className="hero-page-title mb-4">Contact Us</h1>
+              <div className="hero-accent" />
             </Reveal>
           </div>
         </section>

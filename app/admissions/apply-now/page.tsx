@@ -11,10 +11,11 @@ export default function ApplyNowPage() {
         <section className="bg-primary-900 text-white py-20">
           <div className="container-custom text-center">
             <Reveal>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Start Your Admission Journey</h1>
-              <p className="text-lg md:text-xl max-w-3xl mx-auto text-white/85">
+              <h1 className="hero-page-title mb-4">Start Your Admission Journey</h1>
+              <p className="hero-page-subtitle">
                 Complete the form below to request admission information and begin the placement process.
               </p>
+              <div className="hero-accent" />
             </Reveal>
           </div>
         </section>

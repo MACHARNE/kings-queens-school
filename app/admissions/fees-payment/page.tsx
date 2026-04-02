@@ -17,10 +17,11 @@ export default function FeesPaymentPage() {
         <section className="bg-gradient-to-r from-primary-900 to-primary-700 text-white py-20">
           <div className="container-custom">
             <Reveal className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Clear Guidance for Families</h1>
-              <p className="text-lg md:text-xl text-white/85">
+              <h1 className="hero-page-title mb-4">Clear Guidance for Families</h1>
+              <p className="hero-page-subtitle !mx-0">
                 The admissions brief recommends a clear pricing or request-fees call to action. This page provides that path professionally.
               </p>
+              <div className="hero-accent !mx-0" />
             </Reveal>
           </div>
         </section>

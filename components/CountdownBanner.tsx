@@ -4,9 +4,24 @@ import { useEffect, useMemo, useState } from 'react';
 import { Clock3 } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
-const targetDate = new Date('2026-09-15T00:00:00');
+function getNextAdmissionTermDate() {
+  const now = new Date();
+  const year = now.getFullYear();
+  const termStarts = [
+    { label: 'Third Term', date: new Date(year, 3, 1) },
+    { label: 'First Term', date: new Date(year, 8, 1) },
+    { label: 'Second Term', date: new Date(year + 1, 0, 1) },
+  ];
 
-function getRemaining() {
+  const next = termStarts.find((term) => term.date.getTime() > now.getTime()) ?? {
+    label: 'First Term',
+    date: new Date(year + 1, 8, 1),
+  };
+
+  return next;
+}
+
+function getRemaining(targetDate: Date) {
   const now = new Date();
   const diff = Math.max(targetDate.getTime() - now.getTime(), 0);
 
@@ -18,24 +33,22 @@ function getRemaining() {
 }
 
 export default function CountdownBanner() {
-  const [remaining, setRemaining] = useState(getRemaining());
+  const nextTerm = useMemo(() => getNextAdmissionTermDate(), []);
+  const [remaining, setRemaining] = useState(() => getRemaining(nextTerm.date));
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setRemaining(getRemaining());
+      setRemaining(getRemaining(nextTerm.date));
     }, 60000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [nextTerm]);
 
-  const items = useMemo(
-    () => [
-      { label: 'Days', value: remaining.days },
-      { label: 'Hours', value: remaining.hours },
-      { label: 'Minutes', value: remaining.minutes },
-    ],
-    [remaining]
-  );
+  const items = [
+    { label: 'Days', value: remaining.days },
+    { label: 'Hours', value: remaining.hours },
+    { label: 'Minutes', value: remaining.minutes },
+  ];
 
   return (
     <section className="bg-primary-950 py-6">
@@ -45,7 +58,7 @@ export default function CountdownBanner() {
             <div>
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-gold-400">
                 <Clock3 className="h-4 w-4" />
-                Countdown for admission deadline
+                {nextTerm.label}
               </div>
               <h2 className="text-2xl font-bold md:text-3xl">Limited Admission Slots Available</h2>
             </div>

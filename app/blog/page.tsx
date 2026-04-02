@@ -29,10 +29,11 @@ export default function BlogPage() {
         <section className="bg-gradient-to-r from-primary-900 to-primary-700 text-white py-20">
           <div className="container-custom">
             <Reveal className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Insights for Parents, Learners, and Future Leaders</h1>
-              <p className="text-lg md:text-xl text-white/85">
+              <h1 className="hero-page-title mb-4">Insights for Parents, Learners, and Future Leaders</h1>
+              <p className="hero-page-subtitle !mx-0">
                 A professional content hub for school updates, learning advice, admissions guidance, and thought leadership.
               </p>
+              <div className="hero-accent !mx-0" />
             </Reveal>
           </div>
         </section>

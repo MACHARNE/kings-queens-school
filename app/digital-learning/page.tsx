@@ -33,10 +33,11 @@ export default function DigitalLearning() {
         <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20">
           <div className="container-custom text-center">
             <Reveal>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Digital Learning Advantage</h1>
-              <p className="text-xl max-w-3xl mx-auto text-white/85">
+              <h1 className="hero-page-title mb-4">Digital Learning Advantage</h1>
+              <p className="hero-page-subtitle">
                 We integrate features inspired by top platforms like:
               </p>
+              <div className="hero-accent" />
             </Reveal>
           </div>
         </section>

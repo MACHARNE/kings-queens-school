@@ -52,16 +52,7 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="hidden xl:flex items-center gap-5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden xl:flex">
             <Link href="/parent-portal" className="btn-gold !px-4 !py-2 text-sm">
               Parent Portal
             </Link>
@@ -70,6 +61,18 @@ export default function Navbar() {
           <button className="xl:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
+        </div>
+
+        <div className="hidden xl:flex items-center justify-center gap-8 border-t border-white/10 py-3">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {isOpen && (
