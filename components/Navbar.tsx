@@ -20,13 +20,13 @@ export default function Navbar() {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
+    { href: '/about', label: 'About Us' },
     { href: '/academics', label: 'Academics' },
     { href: '/digital-learning', label: 'Digital Learning' },
     { href: '/admissions', label: 'Admissions' },
     { href: '/gallery', label: 'Gallery' },
-    { href: '/blog', label: 'Blog' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/blog', label: 'Learning Hub' },
+    { href: '/contact', label: 'Contact Us' },
   ];
 
   return (

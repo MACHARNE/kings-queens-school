@@ -3,20 +3,27 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Globe2, GraduationCap, Laptop2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 const heroSlides = [
+  { image: '/images/HOMEPAGE HERO SECTION1.jpg', alt: 'Kings and Queens School learning environment' },
+  { image: '/images/HOMEPAGE HERO SECTION2.jpg', alt: 'Kings and Queens School students in class' },
+  { image: '/images/HOMEPAGE HERO SECTION3.jpg', alt: 'Kings and Queens School students and school culture' },
+];
+
+const badges = [
   {
-    image: '/images/HOMEPAGE HERO SECTION1.jpg',
-    alt: 'Kings and Queens School learning environment',
+    icon: <GraduationCap className="h-5 w-5" />,
+    text: 'Primary & Secondary Education (Nigerian Curriculum)',
   },
   {
-    image: '/images/HOMEPAGE HERO SECTION2.jpg',
-    alt: 'Kings and Queens School students in class',
+    icon: <Laptop2 className="h-5 w-5" />,
+    text: 'Blended Learning (Physical + Digital)',
   },
   {
-    image: '/images/HOMEPAGE HERO SECTION3.jpg',
-    alt: 'Kings and Queens School students and school culture',
+    icon: <Globe2 className="h-5 w-5" />,
+    text: 'Globally Competitive, Locally Grounded',
   },
 ];
 
@@ -44,58 +51,66 @@ export default function VideoHero() {
           transition={{ duration: 1.4, ease: 'easeOut' }}
           className="absolute inset-0"
         >
-          <Image
-            src={activeSlide.image}
-            alt={activeSlide.alt}
-            fill
-            priority
-            className="object-cover object-center"
-          />
+          <Image src={activeSlide.image} alt={activeSlide.alt} fill priority className="object-cover object-center" />
         </motion.div>
       </AnimatePresence>
 
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-950/92 via-primary-900/70 to-black/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.20),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.18),transparent_30%)]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary-950/92 via-primary-900/72 to-black/45" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.2),transparent_28%),radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.18),transparent_30%)]" />
 
-      <div className="relative z-10 container-custom min-h-screen flex items-center pt-28 pb-14">
-        <div className="w-full">
-          <div className="max-w-4xl text-white">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeSlide.image}
-                initial={{ opacity: 0, y: 36 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -18 }}
-                transition={{ duration: 0.75, ease: 'easeOut' }}
-              >
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-                  Raising Future Kings & Queens Through Excellence, Innovation & Character
-                </h1>
-                <p className="text-lg md:text-xl mb-8 max-w-2xl text-white/88">
-                  At Kings and Queens School, we combine the strength of the Nigerian curriculum with modern digital learning systems inspired by global platforms and leading online schools.
-                </p>
-                <div className="mb-8 space-y-2 text-white/90">
-                  <p>Primary & Secondary Education (Nigerian Curriculum)</p>
-                  <p>Blended Learning (Physical + Digital)</p>
-                  <p>Globally Competitive, Locally Grounded</p>
+      <div className="relative z-10 container-custom min-h-screen flex items-center pt-28 pb-16">
+        <div className="max-w-5xl text-white">
+          <motion.div
+            key={activeSlide.image}
+            initial={{ opacity: 0, y: 36 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
+            <div className="mb-5 inline-flex items-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-gold-400 shadow-[0_18px_44px_rgba(251,191,36,0.18)] backdrop-blur-md">
+              A premium, digitally-enabled Nigerian school preparing students for both local and global success.
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+              Raising Future Kings & Queens Through Excellence, Innovation & Character
+            </h1>
+            <p className="text-lg md:text-2xl mb-10 max-w-3xl text-white/88">
+              At Kings and Queens School, we combine the strength of the Nigerian curriculum with modern digital learning systems inspired by global platforms and leading online schools.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.85 }}
+            className="mb-10 flex flex-col gap-4"
+          >
+            <div className="flex flex-col gap-4 lg:flex-row">
+              {badges.map((badge) => (
+                <div
+                  key={badge.text}
+                  className="group flex items-center gap-3 rounded-3xl border border-white/15 bg-white/10 px-5 py-4 text-white shadow-[0_20px_45px_rgba(15,23,42,0.35)] backdrop-blur-md transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-gold-400 via-gold-500 to-gold-600 text-primary-950 shadow-[0_16px_30px_rgba(245,158,11,0.35)]">
+                    {badge.icon}
+                  </div>
+                  <p className="font-medium">{badge.text}</p>
                 </div>
-              </motion.div>
-            </AnimatePresence>
+              ))}
+            </div>
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 32 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.9 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <Link href="/admissions" className="btn-gold text-center">
-                Enroll Today
-              </Link>
-              <Link href="/contact" className="btn-secondary text-center">
-                Book a School Tour
-              </Link>
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.9 }}
+            className="flex flex-col sm:flex-row gap-4"
+          >
+            <Link href="/admissions/apply-now" className="btn-gold text-center">
+              Enroll Today
+            </Link>
+            <Link href="/contact" className="btn-secondary text-center">
+              Book a School Tour
+            </Link>
+          </motion.div>
         </div>
       </div>
 

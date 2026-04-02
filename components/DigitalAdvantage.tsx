@@ -1,37 +1,11 @@
-import { Monitor, BarChart, Phone, Video, Award, Users } from 'lucide-react';
+import { BarChart3, MonitorSmartphone, Tv, Video } from 'lucide-react';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
 
 const advantages = [
-  {
-    icon: <Monitor className="w-8 h-8" />,
-    title: 'Smart Classrooms',
-    description: 'Smart Classrooms'
-  },
-  {
-    icon: <BarChart className="w-8 h-8" />,
-    title: 'Performance Tracking',
-    description: 'Performance Tracking & Analytics'
-  },
-  {
-    icon: <Phone className="w-8 h-8" />,
-    title: 'Parent Monitoring',
-    description: 'Parent Monitoring System'
-  },
-  {
-    icon: <Video className="w-8 h-8" />,
-    title: 'Recorded Lessons',
-    description: 'Recorded Lessons & Revision Library'
-  },
-  {
-    icon: <Award className="w-8 h-8" />,
-    title: 'Personalized Learning Support',
-    description: 'Personalized Learning Support'
-  },
-  {
-    icon: <Users className="w-8 h-8" />,
-    title: 'Blended Learning Model',
-    description: 'Physical + Digital'
-  }
+  { icon: <Video className="w-8 h-8" />, title: 'Recorded lessons' },
+  { icon: <Tv className="w-8 h-8" />, title: 'Smart classrooms' },
+  { icon: <MonitorSmartphone className="w-8 h-8" />, title: 'Parent tracking' },
+  { icon: <BarChart3 className="w-8 h-8" />, title: 'Exam preparation system' },
 ];
 
 export default function DigitalAdvantage() {
@@ -39,23 +13,18 @@ export default function DigitalAdvantage() {
     <section className="py-16 md:py-24 bg-white">
       <div className="container-custom">
         <Reveal>
-          <h2 className="section-title">Digital Learning Advantage</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            We integrate features inspired by top platforms like Mind Smith Online School, 21K School, and Cambridge Home School Online.
-          </p>
+          <h2 className="section-title">Digital Advantage</h2>
         </Reveal>
-        
-        <Stagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {advantages.map((adv, index) => (
-            <StaggerItem
-              key={index}
-              className="p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-all duration-300 group"
-            >
-              <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mb-4 text-primary-800 group-hover:bg-primary-800 group-hover:text-white transition-colors duration-300">
-                {adv.icon}
+
+        <Stagger className="grid sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          {advantages.map((adv) => (
+            <StaggerItem key={adv.title}>
+              <div className="h-full rounded-3xl border border-primary-100 bg-gradient-to-br from-white to-primary-50 p-7 shadow-lg transition-transform duration-300 hover:-translate-y-1">
+                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-[1.25rem] bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-gold-400 shadow-[0_20px_40px_rgba(30,58,138,0.3)]">
+                  {adv.icon}
+                </div>
+                <h3 className="text-xl font-bold text-primary-900">{adv.title}</h3>
               </div>
-              <h3 className="text-lg font-bold mb-2">{adv.title}</h3>
-              <p className="text-gray-600">{adv.description}</p>
             </StaggerItem>
           ))}
         </Stagger>

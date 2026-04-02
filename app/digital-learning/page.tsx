@@ -1,9 +1,29 @@
 import Image from 'next/image';
-import { BarChart, Headphones, Smartphone, Video } from 'lucide-react';
+import { BarChart3, MonitorSmartphone, Rocket, Video } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import DigitalAdvantage from '@/components/DigitalAdvantage';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
+
+const platforms = [
+  'Mind Smith Online School',
+  '21K School',
+  'Cambridge Home School Online',
+];
+
+const differentiators = [
+  { icon: <Rocket className="h-7 w-7" />, text: 'Smart Classrooms' },
+  { icon: <BarChart3 className="h-7 w-7" />, text: 'Performance Tracking & Analytics' },
+  { icon: <MonitorSmartphone className="h-7 w-7" />, text: 'Parent Monitoring System' },
+  { icon: <Video className="h-7 w-7" />, text: 'Recorded Lessons & Revision Library' },
+  { icon: <Rocket className="h-7 w-7" />, text: 'Personalized Learning Support' },
+];
+
+const sections = [
+  'Blended learning model',
+  'Tools used',
+  'Benefits to students',
+  'Parent visibility',
+];
 
 export default function DigitalLearning() {
   return (
@@ -13,9 +33,9 @@ export default function DigitalLearning() {
         <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20">
           <div className="container-custom text-center">
             <Reveal>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Blended Learning Model: Physical + Digital</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">Digital Learning Advantage</h1>
               <p className="text-xl max-w-3xl mx-auto text-white/85">
-                We combine traditional classroom teaching with modern e-learning inspired by WAEC curriculum standards, platforms like Gradely, and digital systems similar to FlexiSAF eLearning.
+                We integrate features inspired by top platforms like:
               </p>
             </Reveal>
           </div>
@@ -23,58 +43,61 @@ export default function DigitalLearning() {
 
         <section className="py-16 bg-white">
           <div className="container-custom">
-            <Reveal className="max-w-5xl mx-auto mb-10">
-              <div className="relative aspect-[21/9] overflow-hidden rounded-3xl shadow-xl border border-primary-100">
-                <Image
-                  src="/images/OUR LEARNING APPROACH2.jpg"
-                  alt="Digital learning approach"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </Reveal>
-
-            <Stagger className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <StaggerItem>
-                <div className="text-center p-8 bg-gray-50 rounded-3xl border border-primary-100">
-                  <Video className="w-12 h-12 text-primary-800 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Recorded Lessons</h3>
-                  <p className="text-gray-600">Recorded lessons for revision</p>
+            <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
+              <Reveal>
+                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-primary-100 shadow-2xl">
+                  <Image src="/images/OUR LEARNING APPROACH2.jpg" alt="Digital learning" fill className="object-cover" />
                 </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="text-center p-8 bg-gray-50 rounded-3xl border border-primary-100">
-                  <BarChart className="w-12 h-12 text-primary-800 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Performance Analytics</h3>
-                  <p className="text-gray-600">Continuous assessment & feedback</p>
+              </Reveal>
+              <Reveal>
+                <div className="space-y-4">
+                  {platforms.map((platform) => (
+                    <div key={platform} className="rounded-2xl border border-primary-100 bg-primary-50 px-5 py-4 text-lg font-medium text-primary-900">
+                      {platform}
+                    </div>
+                  ))}
                 </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="text-center p-8 bg-gray-50 rounded-3xl border border-primary-100">
-                  <Smartphone className="w-12 h-12 text-primary-800 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Parent Monitoring System</h3>
-                  <p className="text-gray-600">Parent Monitoring System</p>
-                </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="text-center p-8 bg-gray-50 rounded-3xl border border-primary-100">
-                  <Headphones className="w-12 h-12 text-primary-800 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold mb-2">Personalized Learning Support</h3>
-                  <p className="text-gray-600">Personalized learning pace</p>
-                </div>
-              </StaggerItem>
-            </Stagger>
-
-            <Reveal className="max-w-4xl mx-auto mt-12 rounded-3xl bg-primary-900 text-white p-8 md:p-10">
-              <h2 className="text-3xl font-bold mb-4">Why It Matters</h2>
-              <p className="text-white/85 text-lg">
-                What This Means for Your Child: Live classroom teaching, Recorded lessons for revision, Continuous assessment & feedback, Personalized learning pace, Exam-focused preparation.
-              </p>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
         </section>
 
-        <DigitalAdvantage />
+        <section className="py-16 bg-gray-50">
+          <div className="container-custom">
+            <Reveal>
+              <h2 className="section-title">What Makes Us Different</h2>
+            </Reveal>
+            <Stagger className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+              {differentiators.map((item) => (
+                <StaggerItem key={item.text}>
+                  <div className="rounded-3xl bg-white border border-primary-100 p-7 shadow-lg h-full">
+                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-900 to-primary-700 text-gold-400 shadow-[0_18px_40px_rgba(30,58,138,0.28)]">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-primary-900">{item.text}</h3>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        <section className="py-16 bg-white">
+          <div className="container-custom">
+            <Reveal>
+              <h2 className="section-title">Sections to Include</h2>
+            </Reveal>
+            <Stagger className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {sections.map((item) => (
+                <StaggerItem key={item}>
+                  <div className="rounded-3xl border border-primary-100 bg-gradient-to-br from-white to-primary-50 px-6 py-7 shadow-md text-center font-semibold text-primary-900">
+                    {item}
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

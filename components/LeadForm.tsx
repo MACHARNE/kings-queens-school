@@ -107,7 +107,7 @@ export default function LeadForm() {
           disabled={loading}
           className="w-full bg-primary-800 text-white py-3 rounded-lg font-semibold hover:bg-primary-900 transition-colors disabled:opacity-50"
         >
-          {loading ? 'Submitting...' : submitted ? 'Submitted!' : 'Apply Now'}
+          {loading ? 'Submitting...' : submitted ? 'Submitted!' : 'Apply Now / Get Admission Info'}
         </button>
       </div>
 

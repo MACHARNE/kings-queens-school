@@ -1,28 +1,20 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { BookOpen, GraduationCap, Laptop } from 'lucide-react';
+import { BookOpen, GraduationCap } from 'lucide-react';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
 
 const programs = [
   {
-    icon: <GraduationCap className="w-12 h-12 text-primary-800" />,
+    icon: <GraduationCap className="w-10 h-10" />,
     title: 'Primary School',
-    description: 'Building strong foundations in literacy, numeracy, creativity, and confidence.',
-    grades: 'Basic 1 - 6',
-    link: '/academics',
+    description: 'We build strong foundations in Mathematics, English Language, Basic Science & Technology, Civic Education, and Creative Arts.',
+    image: '/images/PRIMARY SCHOOL2.jpg',
   },
   {
-    icon: <BookOpen className="w-12 h-12 text-primary-800" />,
+    icon: <BookOpen className="w-10 h-10" />,
     title: 'Secondary School',
-    description: 'Comprehensive preparation for WAEC, NECO, and university admission.',
-    grades: 'JSS1 - SS3',
-    link: '/academics',
-  },
-  {
-    icon: <Laptop className="w-12 h-12 text-primary-800" />,
-    title: 'Digital Learning',
-    description: 'Blended learning with recorded lessons, smart classrooms, and parent tracking.',
-    grades: 'All Levels',
-    link: '/digital-learning',
+    description: 'Our secondary programme prepares students for WAEC, NECO, and University admission.',
+    image: '/images/SECONDARY SCHOOL2.jpg',
   },
 ];
 
@@ -31,30 +23,27 @@ export default function Programs() {
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container-custom">
         <Reveal>
-          <h2 className="section-title">Our Academic Programs</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Comprehensive education designed to nurture excellence and prepare students for future success
-          </p>
+          <h2 className="section-title">Programmes Preview</h2>
         </Reveal>
 
-        <Stagger className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {programs.map((program, index) => (
-            <StaggerItem
-              key={index}
-              className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 text-center group"
-            >
-              <div className="flex justify-center mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                {program.icon}
+        <Stagger className="grid lg:grid-cols-2 gap-8">
+          {programs.map((program) => (
+            <StaggerItem key={program.title}>
+              <div className="overflow-hidden rounded-[2rem] border border-primary-100 bg-white shadow-2xl">
+                <div className="relative aspect-[16/10]">
+                  <Image src={program.image} alt={program.title} fill className="object-cover" />
+                </div>
+                <div className="p-8">
+                  <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-900 to-primary-700 text-gold-400 shadow-[0_18px_36px_rgba(30,58,138,0.35)]">
+                    {program.icon}
+                  </div>
+                  <h3 className="mb-3 text-2xl font-bold text-primary-900">{program.title}</h3>
+                  <p className="mb-6 text-gray-600">{program.description}</p>
+                  <Link href="/academics" className="inline-flex items-center font-semibold text-primary-800 hover:text-primary-900">
+                    Explore Academics
+                  </Link>
+                </div>
               </div>
-              <h3 className="text-xl font-bold mb-2">{program.title}</h3>
-              <p className="text-primary-600 text-sm mb-3 font-semibold">{program.grades}</p>
-              <p className="text-gray-600 mb-4">{program.description}</p>
-              <Link
-                href={program.link}
-                className="text-primary-800 font-semibold hover:text-primary-900 inline-flex items-center gap-1"
-              >
-                Learn More
-              </Link>
             </StaggerItem>
           ))}
         </Stagger>

@@ -20,9 +20,9 @@ export default function Footer() {
               <li><Link href="/academics" className="hover:text-gold-400 transition">Academics</Link></li>
               <li><Link href="/admissions" className="hover:text-gold-400 transition">Admissions</Link></li>
               <li><Link href="/gallery" className="hover:text-gold-400 transition">Gallery</Link></li>
-              <li><Link href="/blog" className="hover:text-gold-400 transition">Learning Hub</Link></li>
+              <li><Link href="/blog" className="hover:text-gold-400 transition">Blog / Learning Hub</Link></li>
               <li><Link href="/parent-portal" className="hover:text-gold-400 transition">Parent Portal</Link></li>
-              <li><Link href="/contact" className="hover:text-gold-400 transition">Contact</Link></li>
+              <li><Link href="/contact" className="hover:text-gold-400 transition">Contact Us</Link></li>
             </ul>
           </div>
 
