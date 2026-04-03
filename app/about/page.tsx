@@ -1,72 +1,60 @@
 import Image from 'next/image';
-import { Gem, HeartHandshake, ShieldCheck } from 'lucide-react';
+import { Award, CheckCircle2, Gem, HeartHandshake, Sparkles } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
 
 const leadershipTeam = [
   {
-    name: 'Dr. Nnaukwu Kalu Okwuaghu',
+    name: 'Dr. Nnaukwu Kalu Okwuagwu',
     role: 'Founder & Proprietor',
-    image: '/images/Founder.jpg',
-    bio: 'A visionary educationist with a passion for excellence, Dr. Nnaukwu Kalu Okwuaghu founded Kings and Queens School to raise future leaders through quality education.',
+    image: '/images/Dr. Nnaukwu Kalu Okwuagwu.founder and proprietor.jpg',
   },
   {
-    name: 'Mrs. Rose Kalu',
-    role: 'Vice Principal',
-    image: '/images/Vice Principal.jpg',
-    bio: 'An experienced educationist who believes the best legacy any parent can give a child is education. She oversees academic and administrative operations across the school.',
+    name: 'Mrs. Rose Nnaukwu Kalu',
+    role: 'Executive Director',
+    image: '/images/Mrs. Rose Nnaukwu Kalu  Executive Director.jpg',
   },
   {
-    name: 'Mrs. Chioma Ikpe',
-    role: 'Head Teacher',
-    image: '/images/Chioma Ikpe.jpg',
-    bio: 'Mrs. Chioma Ikpe leads the teaching team with dedication and expertise, ensuring every child receives personal attention and quality instruction.',
+    name: 'Mrs. Peace Chioma Ikpe',
+    role: 'Director, Finance',
+    image: '/images/Mrs. Peace Chioma Ikpe. Director, Finance..jpg',
   },
   {
-    name: 'Chinyere Nnaukwu-Kalu Nkwocha',
-    role: 'Administrative Director',
-    image: '/images/Chinyere.Nnaukwu-Kalu Nkwocha.jpg',
-    bio: 'Chinyere oversees strategic direction and administrative systems, introducing practical innovations that strengthen school operations and long-term growth.',
+    name: 'Queen Chinyere Nnaukwu-Kalu Nkwocha',
+    role: 'Director, Human Resources',
+    image: '/images/Queen Chinyere Nnaukwu-Kalu Nkwocha..jpg',
+  },
+  {
+    name: 'Favour Kelechi Kalu',
+    role: 'Head Mistress',
+    image: '/images/Favour Kelechi Kalu. head mistress.jpg',
   },
   {
     name: 'Mrs. Orji Caroline',
-    role: 'Head Teacher (Primary Section)',
-    image: '/images/teacher.jpg',
-    bio: 'Mrs. Orji Caroline manages the primary section, helping pupils build strong foundations in literacy, numeracy, confidence, and character.',
+    role: 'Principal',
+  },
+  {
+    name: 'Kelechi Kalu',
+    role: 'Executive Director',
   },
 ];
 
-const registrationDetails = [
-  { label: 'Institute Ref Number', value: 'C-445107' },
-  { label: 'Approval Ref Number', value: 'MED/PE/Ao/18PN/108/92' },
-  { label: 'Approval Date', value: '26th August 2008' },
-];
-
-const expansionMilestones = [
-  { year: '1999', detail: 'Rona Kings and Queens Private School established' },
-  { year: '2000', detail: 'Registered with Corporate Affairs Commission' },
-  { year: '2008', detail: 'Approved by Ministry of Education' },
-  { year: '2024', detail: 'Digital learning platform launched' },
-  { year: '2025', detail: 'Online school expansion' },
-  { year: '2026', detail: 'Full School Management System implementation' },
-];
-
-const coreValues = [
+const values = [
   {
-    icon: <ShieldCheck className="h-6 w-6" />,
-    title: 'Integrity',
-    text: 'We raise trustworthy students with strong values and discipline.',
+    icon: <Award className="h-6 w-6" />,
+    title: 'Excellence',
+    text: 'We pursue high academic standards, quality teaching, and meaningful student outcomes.',
   },
   {
     icon: <HeartHandshake className="h-6 w-6" />,
     title: 'Care',
-    text: 'Every child is known, supported, and guided to thrive academically and socially.',
+    text: 'Every learner is known, guided, and supported with personal attention and structure.',
   },
   {
     icon: <Gem className="h-6 w-6" />,
-    title: 'Excellence',
-    text: 'We pursue high standards in teaching, learning, leadership, and character.',
+    title: 'Character',
+    text: 'We raise disciplined, trustworthy, and confident learners ready for leadership.',
   },
 ];
 
@@ -75,98 +63,125 @@ export default function About() {
     <>
       <Navbar />
       <main className="pt-24">
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-20 text-white">
-          <div className="absolute -left-14 top-10 h-44 w-44 rounded-full bg-gold-500/20 blur-3xl" />
-          <div className="absolute -right-16 bottom-8 h-52 w-52 rounded-full bg-primary-400/20 blur-3xl" />
-          <div className="container-custom text-center">
+        <section className="relative overflow-hidden py-20 text-white">
+          <div className="absolute inset-0 gradient-panel" />
+          <div className="grid-overlay absolute inset-0 opacity-30" />
+          <div className="container-custom relative text-center">
             <Reveal>
-              <h1 className="hero-page-title mb-4">About Kings and Queens School</h1>
-              <p className="hero-page-subtitle">
-                A legacy institution in Umuahia focused on quality education, moral formation, and leadership development for a changing world.
+              <p className="mb-4 inline-flex rounded-full border border-white/12 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-gold-300 backdrop-blur">
+                About Us
+              </p>
+              <h1 className="hero-page-title">A royal school culture built on excellence, vision, and care.</h1>
+              <p className="hero-page-subtitle mt-5">
+                Kings &amp; Queens School is a premium learning institution in Umuahia shaping future-ready students through structure, innovation, and strong moral values.
               </p>
               <div className="hero-accent" />
             </Reveal>
           </div>
         </section>
 
-        <section className="bg-white py-16">
-          <div className="container-custom">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
-              <Reveal>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-primary-100 shadow-2xl">
-                  <Image src="/images/WHY CHOOSE KINGS AND QUEENS SCHOOL2.jpg" alt="Kings and Queens School campus life" fill className="object-cover transition duration-700 hover:scale-105" />
+        <section className="py-20 md:py-24">
+          <div className="container-custom grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
+            <Reveal direction="right">
+              <div className="premium-card overflow-hidden rounded-[2rem] p-4">
+                <div className="relative overflow-hidden rounded-[1.5rem]">
+                  <Image
+                    src="/images/WHY CHOOSE KINGS AND QUEENS SCHOOL2.jpg"
+                    alt="Kings and Queens School learning environment"
+                    width={1430}
+                    height={1073}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <h2 className="mb-5 text-3xl font-bold text-primary-900 md:text-4xl">Our History</h2>
-                <p className="mb-4 text-gray-700">
-                  Rona Kings and Queens Private Nursery and Primary School was established in <strong>1999</strong> and approved by Lagos State Government in <strong>2008</strong>.
-                </p>
-                <div className="mb-5 rounded-2xl border border-primary-100 bg-primary-50 p-5">
-                  <p className="mb-3 font-semibold text-primary-900">Registration Details</p>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    {registrationDetails.map((item) => (
-                      <p key={item.label}>
-                        <span className="font-semibold">{item.label}:</span> {item.value}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-                <p className="text-gray-700">
-                  The founding vision was shaped by a deep love for children and the conviction that education is the greatest legacy. From a humble start, the school has grown into a premium learning institution serving families across Umuahia and beyond.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-gray-50 py-16">
-          <div className="container-custom">
-            <Reveal>
-              <h2 className="section-title text-primary-900">Our Expansion Journey</h2>
+              </div>
             </Reveal>
-            <Stagger className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-              {expansionMilestones.map((milestone) => (
-                <StaggerItem key={milestone.year}>
-                  <div className="h-full rounded-3xl border border-primary-100 bg-white p-6 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-xl">
-                    <p className="mb-3 inline-block rounded-full bg-primary-900 px-3 py-1 text-sm font-semibold text-white">{milestone.year}</p>
-                    <p className="text-gray-700">{milestone.detail}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </Stagger>
-          </div>
-        </section>
 
-        <section className="bg-white py-16">
-          <div className="container-custom">
-            <Reveal>
-              <div className="mx-auto max-w-5xl rounded-[2rem] bg-gradient-to-r from-primary-900 via-primary-800 to-primary-700 p-8 text-white shadow-2xl md:p-12">
-                <p className="mb-4 text-sm uppercase tracking-[0.18em] text-gold-400">Mission Statement</p>
-                <p className="text-lg leading-relaxed md:text-xl">
-                  To provide quality education to our society through total commitment to excellent academic programmes and to develop trustworthy, dedicated, God-fearing and great leaders by inculcating good morals, self-confidence and self-discipline in them.
-                </p>
+            <Reveal delay={0.08}>
+              <p className="eyebrow">School History</p>
+              <h2 className="section-title">Building a lasting legacy in quality education since 1999.</h2>
+              <p className="section-copy">
+                Kings &amp; Queens School began with a clear vision: to provide children with strong academic foundations, discipline, confidence, and the values they need to thrive in life.
+              </p>
+              <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                {[
+                  ['1999', 'School established'],
+                  ['2008', 'Approved by Ministry of Education'],
+                  ['Today', 'Expanding with digital learning systems'],
+                ].map(([year, text]) => (
+                  <div key={year} className="premium-card rounded-[1.6rem] p-5">
+                    <p className="font-display text-4xl font-semibold text-primary-900">{year}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{text}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 rounded-[1.75rem] border border-primary-100 bg-primary-50/80 px-6 py-5 text-sm leading-7 text-slate-700">
+                Kings &amp; Queens School continues to evolve into a modern, digitally-enabled learning community while preserving the discipline and academic strength families trust.
               </div>
             </Reveal>
           </div>
         </section>
 
-        <section className="bg-gray-50 py-16">
+        <section className="bg-primary-50/70 py-20 md:py-24">
           <div className="container-custom">
-            <Reveal>
-              <h2 className="section-title text-primary-900">Board of Directors & Management</h2>
+            <div className="grid gap-6 lg:grid-cols-2">
+              <Reveal>
+                <div className="gradient-panel h-full rounded-[2rem] p-8 text-white shadow-[0_28px_80px_rgba(2,6,23,0.26)]">
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-gold-300">Mission</p>
+                  <h2 className="font-display mt-4 text-4xl font-semibold">To provide quality education with total commitment.</h2>
+                  <p className="mt-5 text-sm leading-8 text-white/76">
+                    We are committed to excellent academic programmes and to developing trustworthy, dedicated, God-fearing, and confident leaders with sound morals and self-discipline.
+                  </p>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.08}>
+                <div className="premium-card h-full rounded-[2rem] p-8">
+                  <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary-900">Vision</p>
+                  <h2 className="font-display mt-4 text-4xl font-semibold text-primary-900">To raise future kings and queens for a changing world.</h2>
+                  <div className="mt-5 space-y-3 text-sm leading-7 text-slate-600">
+                    {[
+                      'Blend traditional excellence with innovation.',
+                      'Develop students who are disciplined, capable, and globally aware.',
+                      'Create a school culture where academic strength meets strong character.',
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-primary-800" />
+                        <p>{item}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
+        <section id="leadership" className="py-20 md:py-24">
+          <div className="container-custom">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center">Our Team / Board of Directors</p>
+              <h2 className="section-title">Leadership guiding the Kings &amp; Queens vision.</h2>
             </Reveal>
-            <Stagger className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+
+            <Stagger className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
               {leadershipTeam.map((leader) => (
                 <StaggerItem key={leader.name}>
-                  <div className="h-full overflow-hidden rounded-[1.75rem] border border-primary-100 bg-white shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl">
-                    <div className="relative aspect-[4/3] overflow-hidden">
-                      <Image src={leader.image} alt={leader.name} fill className="object-cover transition duration-700 hover:scale-105" />
-                    </div>
+                  <div className="premium-card h-full overflow-hidden rounded-[2rem]">
+                    {leader.image ? (
+                      <div className="relative aspect-[4/4.5] overflow-hidden">
+                        <Image src={leader.image} alt={leader.name} fill className="object-cover transition duration-700 hover:scale-105" />
+                      </div>
+                    ) : (
+                      <div className="gradient-panel flex aspect-[4/4.5] items-center justify-center">
+                        <div className="flex h-28 w-28 items-center justify-center rounded-full border border-white/12 bg-white/8 text-4xl font-semibold text-gold-300">
+                          {leader.name.split(' ').map((part) => part[0]).slice(0, 2).join('')}
+                        </div>
+                      </div>
+                    )}
+
                     <div className="p-6">
-                      <h3 className="text-xl font-bold text-primary-900">{leader.name}</h3>
-                      <p className="mt-1 text-sm font-semibold uppercase tracking-[0.13em] text-gold-600">{leader.role}</p>
-                      <p className="mt-4 text-sm leading-relaxed text-gray-600">{leader.bio}</p>
+                      <h3 className="text-2xl font-semibold text-primary-900">{leader.name}</h3>
+                      <p className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-gold-600">{leader.role}</p>
                     </div>
                   </div>
                 </StaggerItem>
@@ -175,29 +190,31 @@ export default function About() {
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="bg-slate-950 py-20 text-white md:py-24">
           <div className="container-custom">
-            <Reveal>
-              <h2 className="section-title text-primary-900">Our Core Values</h2>
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center text-gold-300 before:bg-gradient-to-r before:from-gold-300/20 before:to-gold-300">Our Values</p>
+              <h2 className="section-title text-white">The culture behind every lesson and every child.</h2>
             </Reveal>
-            <Stagger className="grid gap-6 md:grid-cols-3">
-              {coreValues.map((value) => (
+
+            <Stagger className="mt-12 grid gap-6 md:grid-cols-3">
+              {values.map((value) => (
                 <StaggerItem key={value.title}>
-                  <div className="h-full rounded-3xl border border-primary-100 bg-primary-50 p-7 shadow-md">
-                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-900 to-primary-700 text-gold-400">
+                  <div className="h-full rounded-[1.75rem] border border-white/8 bg-white/[0.05] p-7 backdrop-blur">
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-gold-400/14 text-gold-300">
                       {value.icon}
                     </div>
-                    <h3 className="mb-2 text-xl font-bold text-primary-900">{value.title}</h3>
-                    <p className="text-gray-700">{value.text}</p>
+                    <h3 className="text-2xl font-semibold">{value.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-white/72">{value.text}</p>
                   </div>
                 </StaggerItem>
               ))}
             </Stagger>
 
-            <Reveal className="mt-10">
-              <div className="rounded-3xl border border-primary-100 bg-gray-50 px-6 py-5 text-gray-700">
-                <p className="font-semibold text-primary-900">Head Office</p>
-                <p>88 Uwalaka Street, Umuahia, Abia State, Nigeria</p>
+            <Reveal className="mt-10 rounded-[1.75rem] border border-gold-400/18 bg-gold-400/10 px-6 py-5 text-sm leading-7 text-white/78">
+              <div className="flex items-start gap-3">
+                <Sparkles className="mt-1 h-4 w-4 shrink-0 text-gold-300" />
+                <p>Visit us at 85 Uwalaka Street, Umuahia, Abia State, Nigeria.</p>
               </div>
             </Reveal>
           </div>

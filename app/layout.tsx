@@ -3,9 +3,9 @@ import StickyApplyButton from '@/components/StickyApplyButton'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Kings and Queens School, Umuahia, Abia State',
-  description: 'A premium, digitally-enabled Nigerian school preparing students for both local and global success.',
-  keywords: 'school in umuahia, kings and queens school, best school in abia state, nigerian curriculum school, digital learning school',
+  title: 'Kings & Queens School | Premium School in Umuahia',
+  description: 'A premium, digitally-enabled school in Umuahia combining Nigerian curriculum excellence with modern digital learning support.',
+  keywords: 'school in umuahia, kings and queens school, premium school in abia state, nigerian curriculum school, digital learning school',
   icons: {
     icon: '/images/logo.png',
     shortcut: '/images/logo.png',
@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="antialiased">
         {children}
         <StickyApplyButton />
         {/* WhatsApp Floating Button */}

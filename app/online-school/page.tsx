@@ -1,82 +1,57 @@
 import Image from 'next/image';
-import { BriefcaseBusiness, CheckCircle2, Globe, GraduationCap, Laptop, Layers3, MessageSquareMore, School, UsersRound } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, CheckCircle2, Play } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import AppFeatureSlider from '@/components/AppFeatureSlider';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
 
-const distinctionFeatures = [
-  'Live virtual classes with Zoom/Teams integration',
-  'Structured primary to secondary curriculum',
-  'Assignments and assessments with auto-grading',
-  'Performance dashboard and progress reports',
-  'WAEC and NECO preparation with mock practice',
-  'Mobile-friendly learning from any device',
-];
-
-const virtualSimsModules = [
-  'Student Management: enrollment, records, and lifecycle data',
-  'Result Processing: automated grading and report card generation',
-  'Parent Communication: SMS and email notifications',
-  'Class Management: schedules, subject allocation, and assignments',
-];
-
-const contentTypes = [
-  { type: 'Video Lessons', description: 'Primary to secondary topic-based learning sessions' },
-  { type: 'Downloadable Notes', description: 'PDF study materials and digital textbooks' },
-  { type: 'Interactive Quizzes', description: 'Auto-graded checks for continuous practice' },
-  { type: 'Mock Exams', description: 'WAEC and NECO aligned timed practice tests' },
-  { type: 'Skill-Based Modules', description: '21st-century skill development tracks' },
-];
-
-const internshipAreas = [
-  'Digital skills: tech, marketing, AI basics, coding',
-  'Leadership development: communication and personal growth',
-  'Internship placement: structured real-world experience',
-  'Career guidance: mentorship and career planning',
-];
-
-const targetAudience = [
+const featureSlides = [
   {
-    title: 'K-12 Schools',
-    points: [
-      'VirtualSIMS integration',
-      'eLearning platform deployment',
-      'Teacher training and onboarding',
-      'Digital curriculum support',
-    ],
+    image: '/images/FEATURE PREVIEW (SLIDER SECTION) of app.jpg',
+    title: 'Interactive Video Lessons',
+    description: 'Step-by-step learning videos designed to hold attention and improve understanding.',
   },
   {
-    title: 'Educators & Tutors',
-    points: [
-      'Create and host courses',
-      'Manage students digitally',
-      'Access structured curriculum',
-      'Expand reach beyond location',
-    ],
+    image: '/images/FEATURE PREVIEW (SLIDER SECTION) of app2.png',
+    title: 'Practice Questions & Quizzes',
+    description: 'Give students instant practice with short checks, revision tasks, and quiz-driven confidence building.',
   },
   {
-    title: 'Students & Parents',
-    points: [
-      'Flexible learning schedule',
-      'Exam-focused preparation',
-      'Personalized learning paths',
-      'Access to digital resources anywhere',
-    ],
+    image: '/images/FEATURE PREVIEW (SLIDER SECTION) of app3.jpg',
+    title: 'Progress Tracking',
+    description: 'Follow student growth through visible performance trends and revision activity.',
   },
 ];
 
-const gettingStarted = [
+const learnerLevels = [
   {
-    title: 'For Schools',
-    steps: ['Schedule a VirtualSIMS demo', 'Customize platform configuration', 'Teacher training and onboarding', 'Go live in 2 to 4 weeks'],
+    title: 'Primary School',
+    image: '/images/PRIMARY SCHOOL learning.jpg',
+    description: 'Immersive lessons in Mathematics, English, and Science that build strong foundations early.',
   },
   {
-    title: 'For Teachers',
-    steps: ['Register as an online tutor', 'Create your course or join our platform', 'Start teaching and earning online'],
+    title: 'Junior Secondary',
+    image: '/images/junior secondary.jpg',
+    description: 'Simplified learning in core subjects that improves reasoning, confidence, and problem solving.',
   },
   {
-    title: 'For Students/Parents',
-    steps: ['Enroll in Kings and Queens Online School', 'Receive login credentials', 'Start learning from anywhere'],
+    title: 'Senior Secondary',
+    image: '/images/senior secondary learnig.png',
+    description: 'Advanced preparation across Sciences, Arts, and Commercial subjects with WAEC and NECO focus.',
+  },
+];
+
+const testimonials = [
+  {
+    initials: 'P',
+    title: 'Parent, Umuahia',
+    quote: 'This is the best learning system for students who want to excel academically.',
+  },
+  {
+    initials: 'S',
+    title: 'Student',
+    quote: 'I improved my results significantly using this platform.',
   },
 ];
 
@@ -85,151 +60,171 @@ export default function OnlineSchoolPage() {
     <>
       <Navbar />
       <main className="pt-24">
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 py-20 text-white">
-          <div className="absolute -left-14 top-10 h-44 w-44 rounded-full bg-gold-500/20 blur-3xl" />
-          <div className="absolute -right-16 bottom-8 h-52 w-52 rounded-full bg-primary-400/20 blur-3xl" />
-          <div className="container-custom text-center">
-            <Reveal>
-              <h1 className="hero-page-title mb-4">Kings & Queens Online School</h1>
-              <p className="hero-page-subtitle">
-                A hybrid digital education platform delivering Nigerian curriculum excellence with global learning technology.
-              </p>
-              <div className="hero-accent" />
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="bg-white py-16">
-          <div className="container-custom">
-            <div className="grid items-center gap-10 lg:grid-cols-[1.03fr_0.97fr]">
-              <Reveal>
-                <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-primary-100 shadow-2xl">
-                  <Image src="/images/OUR LEARNING APPROACH2.jpg" alt="Digital learning class experience" fill className="object-cover transition duration-700 hover:scale-105" />
-                </div>
-              </Reveal>
-              <Reveal delay={0.08}>
-                <h2 className="mb-4 text-3xl font-bold text-primary-900 md:text-4xl">Our eLearning Solutions</h2>
-                <p className="text-gray-700">
-                  Kings & Queens Online School combines live teaching, digital content, intelligent school administration, and career-focused programs in one coordinated ecosystem.
+        <section className="relative isolate overflow-hidden py-20">
+          <div className="absolute inset-0 gradient-panel" />
+          <div className="grid-overlay absolute inset-0 opacity-25" />
+          <div className="container-custom relative">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.02fr_0.98fr]">
+              <Reveal className="max-w-3xl">
+                <p className="mb-4 inline-flex rounded-full border border-white/12 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-gold-300 backdrop-blur">
+                  App Download Landing Page
                 </p>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+                <h1 className="hero-page-title">Download the Kings &amp; Queens Learning App for Better School Grades</h1>
+                <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82">
+                  Dive into a powerful learning experience with video lessons, quizzes, and exam preparation tools designed for Nigerian students.
+                </p>
 
-        <section className="bg-gray-50 py-16">
-          <div className="container-custom">
-            <Stagger className="grid gap-6 lg:grid-cols-2">
-              <StaggerItem>
-                <div className="h-full rounded-[2rem] border border-primary-100 bg-white p-8 shadow-xl">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-900 text-gold-400">
-                    <GraduationCap className="h-6 w-6" />
-                  </div>
-                  <h3 className="mb-3 text-2xl font-bold text-primary-900">DISTINCTION(TM)</h3>
-                  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-gold-600">Complete Digital School Experience</p>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    {distinctionFeatures.map((item) => (
-                      <div key={item} className="flex items-start gap-2">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary-700" />
-                        <p>{item}</p>
-                      </div>
+                <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                  <Link href="/contact" className="btn-gold">
+                    <Play className="h-4 w-4" />
+                    Download on Google Play
+                  </Link>
+                  <Link href="/admissions" className="btn-secondary border-white/15 bg-white/10 text-white hover:bg-white/15 hover:text-white">
+                    Get Started Now
+                  </Link>
+                </div>
+
+                <div className="mt-8 rounded-[1.75rem] border border-white/10 bg-white/8 p-5 text-white/78 backdrop-blur">
+                  <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-300">Flexible Plans</p>
+                  <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                    {['Monthly Plan', 'Annual Plan', 'Lifetime Access'].map((item) => (
+                      <span key={item} className="rounded-full border border-white/10 bg-white/10 px-4 py-2 font-semibold">
+                        {item}
+                      </span>
                     ))}
                   </div>
                 </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="h-full rounded-[2rem] border border-primary-100 bg-white p-8 shadow-xl">
-                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-900 text-gold-400">
-                    <Layers3 className="h-6 w-6" />
-                  </div>
-                  <h3 className="mb-3 text-2xl font-bold text-primary-900">VIRTUALSIMS(TM)</h3>
-                  <p className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-gold-600">Digital Administration Engine</p>
-                  <div className="space-y-2 text-sm text-gray-700">
-                    {virtualSimsModules.map((item) => (
-                      <div key={item} className="flex items-start gap-2">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary-700" />
-                        <p>{item}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </StaggerItem>
-            </Stagger>
-          </div>
-        </section>
-
-        <section className="bg-white py-16">
-          <div className="container-custom">
-            <Reveal>
-              <h2 className="section-title text-primary-900">e-Learning Content Library</h2>
-            </Reveal>
-            <Stagger className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {contentTypes.map((item) => (
-                <StaggerItem key={item.type}>
-                  <div className="h-full rounded-3xl border border-primary-100 bg-primary-50 p-6 shadow-md">
-                    <p className="font-bold text-primary-900">{item.type}</p>
-                    <p className="mt-2 text-sm text-gray-700">{item.description}</p>
-                  </div>
-                </StaggerItem>
-              ))}
-            </Stagger>
-            <Reveal className="mt-8 rounded-3xl border border-primary-100 bg-gray-50 p-6 text-sm text-gray-700">
-              <p className="font-semibold text-primary-900">Subjects Covered</p>
-              <p className="mt-2">
-                Mathematics, English Language, Basic Science and Technology, Social Studies, Civic Education, Christian Religious Studies, Agricultural Science, Health Education, and all core Nigerian curriculum subjects.
-              </p>
-            </Reveal>
-          </div>
-        </section>
-
-        <section className="bg-gray-50 py-16">
-          <div className="container-custom">
-            <div className="grid items-center gap-10 lg:grid-cols-[0.98fr_1.02fr]">
-              <Reveal>
-                <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-primary-100 shadow-2xl">
-                  <Image src="/images/graduation-kids.jpg" alt="Students in leadership and career development sessions" fill className="object-cover transition duration-700 hover:scale-105" />
-                </div>
               </Reveal>
-              <Reveal delay={0.08}>
-                <h2 className="mb-4 text-3xl font-bold text-primary-900 md:text-4xl">Internships & Training</h2>
-                <p className="mb-5 text-gray-700">
-                  We bridge education with real-world readiness through practical programs that prepare learners for higher education and modern careers.
-                </p>
-                <div className="space-y-2 text-sm text-gray-700">
-                  {internshipAreas.map((item) => (
-                    <div key={item} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary-700" />
-                      <p>{item}</p>
+
+              <Reveal direction="left" delay={0.08}>
+                <div className="relative mx-auto max-w-md">
+                  <div className="absolute inset-x-10 top-12 h-52 rounded-full bg-gold-400/20 blur-3xl" />
+                  <div className="premium-card relative overflow-hidden rounded-[2.2rem] p-4">
+                    <div className="absolute right-5 top-5 rounded-full bg-primary-900 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-gold-300">
+                      Mobile First
                     </div>
-                  ))}
+                    <div className="relative overflow-hidden rounded-[1.8rem] bg-slate-950">
+                      <Image
+                        src="/images/LANDING PAGE DOWNLOAD THE LEARNING APP.png"
+                        alt="Kings and Queens learning app mobile preview"
+                        width={717}
+                        height={1076}
+                        className="h-auto w-full"
+                        priority
+                      />
+                    </div>
+                  </div>
                 </div>
               </Reveal>
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-16">
+        <section className="py-20 md:py-24">
           <div className="container-custom">
-            <Reveal>
-              <h2 className="section-title text-primary-900">Target Audience</h2>
+            <Reveal className="mb-10 text-center">
+              <p className="eyebrow justify-center">Feature Preview</p>
+              <h2 className="section-title">What you&apos;ll experience inside the app.</h2>
             </Reveal>
-            <Stagger className="grid gap-6 md:grid-cols-3">
-              {targetAudience.map((group, index) => (
-                <StaggerItem key={group.title}>
-                  <div className="h-full rounded-3xl border border-primary-100 bg-white p-7 shadow-lg">
-                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-900 text-gold-400">
-                      {index === 0 && <School className="h-6 w-6" />}
-                      {index === 1 && <UsersRound className="h-6 w-6" />}
-                      {index === 2 && <Laptop className="h-6 w-6" />}
+            <Reveal>
+              <AppFeatureSlider slides={featureSlides} />
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-primary-50/70 py-20 md:py-24">
+          <div className="container-custom">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center">Sample Subjects</p>
+              <h2 className="section-title">Explore hundreds of topics across key subjects.</h2>
+            </Reveal>
+
+            <Stagger className="mt-10 grid gap-6 md:grid-cols-3">
+              {[
+                { subject: 'Basic Science', topic: 'Immunity' },
+                { subject: 'Literature', topic: 'Metafiction' },
+                { subject: 'Revision Hub', topic: 'Quizzes, notes, and practice tests' },
+              ].map((card, index) => (
+                <StaggerItem key={card.subject}>
+                  <div className={`h-full rounded-[1.75rem] p-7 ${index === 1 ? 'gradient-panel text-white' : 'premium-card'}`}>
+                    <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${index === 1 ? 'text-gold-300' : 'text-primary-900'}`}>{card.subject}</p>
+                    <h3 className="mt-3 text-3xl font-semibold">{card.topic}</h3>
+                    <p className={`mt-4 text-sm leading-7 ${index === 1 ? 'text-white/72' : 'text-slate-600'}`}>
+                      Learners can move from understanding to practice with lessons tailored to Nigerian school expectations.
+                    </p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        <section className="py-20 md:py-24">
+          <div className="container-custom grid items-center gap-10 lg:grid-cols-[0.98fr_1.02fr]">
+            <Reveal direction="right">
+              <div className="premium-card overflow-hidden rounded-[2rem] p-4">
+                <div className="relative overflow-hidden rounded-[1.6rem]">
+                  <Image
+                    src="/images/Core eLearning Solutions & Features dictation.jpg"
+                    alt="Teacher using the digital teaching platform"
+                    width={2250}
+                    height={1382}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <p className="eyebrow">For Teachers &amp; Schools</p>
+              <h2 className="section-title">From preparation to teaching, we&apos;ve got educators covered.</h2>
+              <p className="section-copy">
+                Kings & Queens gives teachers and partner schools the tools they need to reduce repetitive workload and deliver stronger classroom outcomes.
+              </p>
+              <div className="mt-8 space-y-3">
+                {[
+                  'Pre-made lesson plans',
+                  'Engaging video content',
+                  'Assessment tools',
+                  'Digital classroom support',
+                ].map((item) => (
+                  <div key={item} className="premium-card flex items-center gap-3 rounded-2xl p-4">
+                    <CheckCircle2 className="h-5 w-5 text-primary-800" />
+                    <p className="text-sm font-medium text-slate-700">{item}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 rounded-[1.75rem] gradient-panel px-6 py-5 text-white shadow-[0_25px_70px_rgba(2,6,23,0.24)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-300">Teaching Impact</p>
+                <p className="mt-2 text-base leading-8 text-white/78">Reduce teaching workload by over 50% while improving student engagement and lesson consistency.</p>
+              </div>
+
+              <Link href="/contact" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-900">
+                Partner with Us
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-slate-950 py-20 text-white md:py-24">
+          <div className="container-custom">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center text-gold-300 before:bg-gradient-to-r before:from-gold-300/20 before:to-gold-300">Everything Students Need</p>
+              <h2 className="section-title text-white">No student is left behind.</h2>
+            </Reveal>
+
+            <Stagger className="mt-12 grid gap-6 lg:grid-cols-3">
+              {learnerLevels.map((level) => (
+                <StaggerItem key={level.title}>
+                  <div className="h-full overflow-hidden rounded-[2rem] border border-white/8 bg-white/[0.05] shadow-[0_30px_80px_rgba(2,6,23,0.28)]">
+                    <div className="relative aspect-[16/11] overflow-hidden">
+                      <Image src={level.image} alt={level.title} fill className="object-cover transition duration-700 hover:scale-105" />
                     </div>
-                    <h3 className="mb-4 text-xl font-bold text-primary-900">{group.title}</h3>
-                    <div className="space-y-2 text-sm text-gray-700">
-                      {group.points.map((point) => (
-                        <div key={point} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary-700" />
-                          <p>{point}</p>
-                        </div>
-                      ))}
+                    <div className="p-6">
+                      <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gold-300">{level.title}</p>
+                      <p className="mt-4 text-sm leading-7 text-white/72">{level.description}</p>
                     </div>
                   </div>
                 </StaggerItem>
@@ -238,43 +233,96 @@ export default function OnlineSchoolPage() {
           </div>
         </section>
 
-        <section className="bg-gray-50 py-16">
-          <div className="container-custom">
-            <Reveal>
-              <h2 className="section-title text-primary-900">How to Get Started</h2>
+        <section className="relative overflow-hidden py-20 md:py-24">
+          <Image
+            src="/images/WHY CHOOSE KINGS AND QUEENS SCHOOL.jpg"
+            alt="Students learning together"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(7,18,39,0.88),rgba(16,39,80,0.74),rgba(7,18,39,0.72))]" />
+
+          <div className="container-custom relative text-white">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center text-gold-300 before:bg-gradient-to-r before:from-gold-300/20 before:to-gold-300">Social Proof</p>
+              <h2 className="section-title text-white">The learning platform everyone is talking about.</h2>
             </Reveal>
-            <Stagger className="grid gap-6 lg:grid-cols-3">
-              {gettingStarted.map((item) => (
-                <StaggerItem key={item.title}>
-                  <div className="h-full rounded-3xl border border-primary-100 bg-white p-7 shadow-lg">
-                    <h3 className="mb-4 text-xl font-bold text-primary-900">{item.title}</h3>
-                    <div className="space-y-2 text-sm text-gray-700">
-                      {item.steps.map((step) => (
-                        <div key={step} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-primary-700" />
-                          <p>{step}</p>
-                        </div>
-                      ))}
-                    </div>
+
+            <Stagger className="mt-12 grid gap-6 md:grid-cols-3">
+              {[
+                ['10,000+', 'Students Learning'],
+                ['500,000+', 'Questions Attempted'],
+                ['1M+', 'Lessons Watched'],
+              ].map(([value, label]) => (
+                <StaggerItem key={label}>
+                  <div className="rounded-[1.75rem] border border-white/10 bg-white/8 p-7 text-center backdrop-blur">
+                    <p className="font-display text-5xl font-semibold text-gold-300">{value}</p>
+                    <p className="mt-3 text-sm font-semibold uppercase tracking-[0.22em] text-white/74">{label}</p>
                   </div>
                 </StaggerItem>
               ))}
             </Stagger>
+          </div>
+        </section>
 
-            <Reveal className="mt-10 rounded-[2rem] bg-primary-900 p-8 text-white shadow-2xl">
-              <h3 className="mb-4 text-2xl font-bold">Contact for Partnership</h3>
-              <div className="grid gap-4 text-sm md:grid-cols-3">
-                <div className="flex items-start gap-2">
-                  <Globe className="mt-0.5 h-4 w-4 text-gold-400" />
-                  <p>Head Office: 88 Uwalaka Street, Umuahia, Abia State, Nigeria</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <BriefcaseBusiness className="mt-0.5 h-4 w-4 text-gold-400" />
-                  <p>Phone: +234 803 350 5742</p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <MessageSquareMore className="mt-0.5 h-4 w-4 text-gold-400" />
-                  <p>Email: info@kings-queens-school.com</p>
+        <section className="py-20 md:py-24">
+          <div className="container-custom">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center">Testimonials</p>
+              <h2 className="section-title">Loved by parents and students who care about results.</h2>
+            </Reveal>
+
+            <Stagger className="mt-12 grid gap-6 md:grid-cols-2">
+              {testimonials.map((testimonial, index) => (
+                <StaggerItem key={testimonial.title}>
+                  <div className={`h-full rounded-[2rem] p-7 ${index === 0 ? 'premium-card' : 'gradient-panel text-white'} shadow-[0_25px_70px_rgba(15,23,42,0.08)]`}>
+                    <div className="flex items-center gap-4">
+                      <div className={`flex h-16 w-16 items-center justify-center rounded-full text-2xl font-bold ${index === 0 ? 'bg-primary-900 text-gold-300' : 'bg-white/10 text-gold-300'}`}>
+                        {testimonial.initials}
+                      </div>
+                      <div>
+                        <p className={`text-sm font-semibold uppercase tracking-[0.22em] ${index === 0 ? 'text-primary-900' : 'text-gold-300'}`}>{testimonial.title}</p>
+                        <p className={`mt-1 text-xs font-semibold uppercase tracking-[0.2em] ${index === 0 ? 'text-gold-500' : 'text-gold-300'}`}>5-Star Review</p>
+                      </div>
+                    </div>
+                    <p className={`mt-6 text-lg leading-8 ${index === 0 ? 'text-slate-700' : 'text-white/76'}`}>&quot;{testimonial.quote}&quot;</p>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </div>
+        </section>
+
+        <section className="pb-20 md:pb-24">
+          <div className="container-custom">
+            <Reveal>
+              <div className="relative overflow-hidden rounded-[2.25rem] px-6 py-12 text-white shadow-[0_35px_100px_rgba(2,6,23,0.22)] md:px-12">
+                <Image
+                  src="/images/new-hero3.jpg"
+                  alt="Referral programme background"
+                  fill
+                  className="object-cover"
+                  sizes="100vw"
+                />
+                <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(7,18,39,0.88),rgba(16,39,80,0.78),rgba(7,18,39,0.7))]" />
+
+                <div className="relative max-w-3xl">
+                  <p className="eyebrow text-gold-300 before:bg-gradient-to-r before:from-gold-300/20 before:to-gold-300">Referral Programme</p>
+                  <h2 className="section-title text-white">Refer &amp; earn with Kings &amp; Queens Online Learning.</h2>
+                  <p className="max-w-2xl text-base leading-8 text-white/76">
+                    Refer students to Kings & Queens Online Learning and earn rewards of up to <strong className="text-gold-300">N5,000</strong> per referral.
+                  </p>
+
+                  <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+                    <Link href="/contact" className="btn-gold">
+                      Join the Referral Programme
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <Link href="/admissions" className="btn-secondary">
+                      Get Started
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Reveal>

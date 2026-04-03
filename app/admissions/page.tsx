@@ -1,133 +1,180 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { CalendarDays, ClipboardCheck, FileText, School } from 'lucide-react';
+import { ArrowRight, CheckCircle2, ClipboardCheck, FileText, School, TimerReset } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import LeadForm from '@/components/LeadForm';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
+
+const admissionSteps = [
+  'Submit the admission enquiry or application form.',
+  'Receive guidance on the appropriate class level and requirements.',
+  'Attend placement assessment and parent interaction where applicable.',
+  'Complete enrollment and onboarding into the school system.',
+];
+
+const requirements = [
+  'Completed application details',
+  'Previous school records or report cards where available',
+  'Passport photograph and parent contact details',
+  'Any supporting documents requested during review',
+];
 
 export default function Admissions() {
   return (
     <>
       <Navbar />
       <main className="pt-24">
-        <section className="bg-gradient-to-br from-primary-900 via-primary-800 to-primary-700 text-white py-20">
-          <div className="container-custom text-center">
+        <section className="relative overflow-hidden py-20 text-white">
+          <div className="absolute inset-0 gradient-panel" />
+          <div className="grid-overlay absolute inset-0 opacity-25" />
+          <div className="container-custom relative text-center">
             <Reveal>
-              <h1 className="hero-page-title mb-4">Admissions</h1>
-              <p className="hero-page-subtitle">
-                Begin Your Child&apos;s Journey to Excellence
+              <p className="mb-4 inline-flex rounded-full border border-white/12 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-gold-300 backdrop-blur">
+                Admissions
+              </p>
+              <h1 className="hero-page-title">Begin your child&apos;s journey to excellence.</h1>
+              <p className="hero-page-subtitle mt-5">
+                Admissions at Kings &amp; Queens School are structured to help parents move from enquiry to enrollment with clarity and confidence.
               </p>
               <div className="hero-accent" />
             </Reveal>
           </div>
         </section>
 
-        <section className="py-16 bg-white">
-          <div className="container-custom">
-            <Reveal className="max-w-5xl mx-auto mb-10">
-              <div className="relative aspect-[21/9] overflow-hidden rounded-3xl shadow-xl border border-primary-100">
-                <Image
-                  src="/images/WHY CHOOSE KINGS AND QUEENS SCHOOL3.jpg"
-                  alt="Admissions and school environment"
-                  fill
-                  className="object-cover"
-                />
+        <section className="py-20 md:py-24">
+          <div className="container-custom grid gap-10 lg:grid-cols-[1.04fr_0.96fr]">
+            <Reveal direction="right">
+              <div className="premium-card overflow-hidden rounded-[2rem] p-4">
+                <div className="relative overflow-hidden rounded-[1.5rem]">
+                  <Image
+                    src="/images/WHY CHOOSE KINGS AND QUEENS SCHOOL3.jpg"
+                    alt="Admissions and campus life"
+                    width={624}
+                    height={439}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </Reveal>
 
-            <Stagger className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-              <StaggerItem>
-                <div className="bg-gray-50 border border-primary-100 rounded-2xl p-6 h-full">
-                  <School className="w-10 h-10 text-primary-800 mb-4" />
-                  <h2 className="text-xl font-bold mb-3 text-primary-900">Who Can Apply</h2>
-                  <p className="text-gray-600">Who can apply</p>
-                </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="bg-gray-50 border border-primary-100 rounded-2xl p-6 h-full">
-                  <FileText className="w-10 h-10 text-primary-800 mb-4" />
-                  <h2 className="text-xl font-bold mb-3 text-primary-900">Requirements</h2>
-                  <p className="text-gray-600">Requirements</p>
-                </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="bg-gray-50 border border-primary-100 rounded-2xl p-6 h-full">
-                  <ClipboardCheck className="w-10 h-10 text-primary-800 mb-4" />
-                  <h2 className="text-xl font-bold mb-3 text-primary-900">Entrance Process</h2>
-                  <p className="text-gray-600">Admission steps</p>
-                </div>
-              </StaggerItem>
-              <StaggerItem>
-                <div className="bg-gray-50 border border-primary-100 rounded-2xl p-6 h-full">
-                  <CalendarDays className="w-10 h-10 text-primary-800 mb-4" />
-                  <h2 className="text-xl font-bold mb-3 text-primary-900">School Calendar</h2>
-                  <p className="text-gray-600">School calendar</p>
-                </div>
-              </StaggerItem>
+            <Reveal delay={0.08}>
+              <p className="eyebrow">Why Families Apply</p>
+              <h2 className="section-title">A premium school experience with strong structure and visible progress.</h2>
+              <div className="space-y-4 text-sm leading-7 text-slate-600">
+                {[
+                  'Nigerian curriculum with digital learning support.',
+                  'Dedicated teachers and consistent progress tracking.',
+                  'A disciplined school culture in a supportive environment.',
+                ].map((item) => (
+                  <div key={item} className="premium-card flex items-start gap-3 rounded-2xl p-4">
+                    <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-primary-800" />
+                    <p>{item}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+                <Link href="#application" className="btn-primary">
+                  Start Application
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link href="/contact#visit" className="btn-secondary">
+                  Book a School Visit
+                </Link>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-primary-50/70 py-20 md:py-24">
+          <div className="container-custom">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center">Admissions Overview</p>
+              <h2 className="section-title">What to expect from the enrollment process.</h2>
+            </Reveal>
+
+            <Stagger className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+              {[
+                {
+                  icon: <School className="h-6 w-6" />,
+                  title: 'Who Can Apply',
+                  text: 'Primary and secondary school learners seeking quality education in a structured environment.',
+                },
+                {
+                  icon: <FileText className="h-6 w-6" />,
+                  title: 'Requirements',
+                  text: 'Basic admission documents and previous school information help us place students appropriately.',
+                },
+                {
+                  icon: <ClipboardCheck className="h-6 w-6" />,
+                  title: 'Placement Review',
+                  text: 'We guide families through the best class fit and any needed assessment steps.',
+                },
+                {
+                  icon: <TimerReset className="h-6 w-6" />,
+                  title: 'Fast Follow-Up',
+                  text: 'Our team responds quickly so parents can move from enquiry to enrollment without confusion.',
+                },
+              ].map((item) => (
+                <StaggerItem key={item.title}>
+                  <div className="premium-card h-full rounded-[1.75rem] p-6">
+                    <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-900 text-gold-300">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-2xl font-semibold text-primary-900">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-slate-600">{item.text}</p>
+                  </div>
+                </StaggerItem>
+              ))}
             </Stagger>
           </div>
         </section>
 
-        <section className="py-16 bg-gray-50">
-          <div className="container-custom">
-            <Reveal className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-8 text-center">Admission Process</h2>
-              <div className="space-y-6">
-                <div className="flex gap-4 items-start">
-                  <div className="w-10 h-10 bg-primary-800 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Submit Application</h3>
-                    <p className="text-gray-600">Fill out the admission form with your child&apos;s details</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="w-10 h-10 bg-primary-800 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Entrance Assessment</h3>
-                    <p className="text-gray-600">Your child will take a placement test</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="w-10 h-10 bg-primary-800 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Interview</h3>
-                    <p className="text-gray-600">Parent and child interview with school administration</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="w-10 h-10 bg-primary-800 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">4</div>
-                  <div>
-                    <h3 className="font-semibold text-lg">Enrollment</h3>
-                    <p className="text-gray-600">Complete registration and secure your child&apos;s placement</p>
-                  </div>
+        <section className="py-20 md:py-24">
+          <div className="container-custom grid gap-10 lg:grid-cols-2">
+            <Reveal>
+              <div className="gradient-panel h-full rounded-[2rem] p-8 text-white shadow-[0_28px_80px_rgba(2,6,23,0.24)]">
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-gold-300">Admission Process</p>
+                <div className="mt-8 space-y-5">
+                  {admissionSteps.map((step, index) => (
+                    <div key={step} className="flex gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold-400/14 text-sm font-bold text-gold-300">
+                        0{index + 1}
+                      </div>
+                      <p className="text-sm leading-7 text-white/76">{step}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </Reveal>
 
-            <Reveal className="max-w-5xl mx-auto mt-12">
-              <div className="grid md:grid-cols-3 gap-6">
-                <Link href="/admissions/apply-now" className="bg-white border border-primary-100 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold text-primary-900 mb-2">Apply Now</h3>
-                  <p className="text-gray-600">Start Application</p>
-                </Link>
-                <Link href="/admissions/fees-payment" className="bg-white border border-primary-100 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold text-primary-900 mb-2">Fees & Payment</h3>
-                  <p className="text-gray-600">Fees & Payment</p>
-                </Link>
-                <Link href="/admissions/entrance-process" className="bg-white border border-primary-100 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow">
-                  <h3 className="text-xl font-bold text-primary-900 mb-2">Entrance Process</h3>
-                  <p className="text-gray-600">Entrance Process</p>
-                </Link>
+            <Reveal delay={0.08}>
+              <div className="premium-card h-full rounded-[2rem] p-8">
+                <p className="text-sm font-semibold uppercase tracking-[0.22em] text-primary-900">Admission Requirements</p>
+                <div className="mt-8 space-y-4">
+                  {requirements.map((item) => (
+                    <div key={item} className="flex items-start gap-3 rounded-2xl bg-primary-50 px-4 py-4">
+                      <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-primary-800" />
+                      <p className="text-sm leading-7 text-slate-700">{item}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </Reveal>
           </div>
         </section>
 
-        <section className="py-16 bg-white">
+        <section id="application" className="pb-20 md:pb-24">
           <div className="container-custom">
-            <h2 className="section-title">Start Your Application</h2>
-            <LeadForm />
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center">Application Form</p>
+              <h2 className="section-title">Start your application today.</h2>
+            </Reveal>
+            <Reveal className="mt-10">
+              <div className="premium-card rounded-[2rem] p-6 md:p-8">
+                <LeadForm />
+              </div>
+            </Reveal>
           </div>
         </section>
       </main>

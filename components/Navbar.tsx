@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useEffectEvent, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Menu, Search, X } from 'lucide-react';
+import { ArrowUpRight, Menu, Search, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,49 +13,48 @@ export default function Navbar() {
   const portalUrl = 'https://kqis-portal-158h.vercel.app/';
   const router = useRouter();
 
+  const syncScrollState = useEffectEvent(() => {
+    setIsScrolled(window.scrollY > 24);
+  });
+
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => syncScrollState();
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
-    { href: '/academics', label: 'Academics' },
-    { href: '/academics/examinations', label: 'Examinations' },
-    { href: '/digital-learning', label: 'Digital Learning' },
-    { href: '/online-school', label: 'Online School' },
-    { href: '/student-life', label: 'Student Life' },
+    { href: '/academics', label: 'Classes' },
+    { href: '/online-school', label: 'Learning App' },
     { href: '/admissions', label: 'Admissions' },
-    { href: portalUrl, label: 'Portals' },
-    { href: '/gallery', label: 'Gallery' },
-    { href: '/contact', label: 'Contact Us' },
+    { href: '/contact', label: 'Contact' },
   ];
 
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const trimmedQuery = searchQuery.trim();
-
-    if (!trimmedQuery) {
-      router.push('/search');
-    } else {
-      router.push(`/search?q=${encodeURIComponent(trimmedQuery)}`);
-    }
-
+    router.push(trimmedQuery ? `/search?q=${encodeURIComponent(trimmedQuery)}` : '/search');
     setIsOpen(false);
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-primary-900 shadow-lg' : 'bg-primary-900/95'}`}>
+    <nav
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-[rgba(7,18,39,0.9)] shadow-[0_20px_70px_rgba(2,6,23,0.35)] backdrop-blur-xl'
+          : 'bg-[rgba(7,18,39,0.68)] backdrop-blur-lg'
+      }`}
+    >
       <div className="container-custom">
         <div className="flex items-center gap-4 py-4">
-          <Link href="/" className="flex items-center gap-2">
-            <div className="rounded-2xl bg-white/95 p-1.5 shadow-md ring-1 ring-white/20">
+          <Link href="/" className="flex items-center gap-3">
+            <div className="rounded-[1.35rem] bg-white/95 p-1.5 shadow-[0_12px_40px_rgba(15,23,42,0.25)] ring-1 ring-white/20">
               <Image
                 src="/images/logo.png"
                 alt="Kings and Queens School Logo"
@@ -66,10 +65,11 @@ export default function Navbar() {
               />
             </div>
             <div className="hidden md:block">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.35em] text-gold-300">Umuahia</p>
               <h1 className="text-xl font-bold text-white">
-                Kings & Queens <span className="text-gold-400">School</span>
+                Kings & Queens <span className="text-gold-300">School</span>
               </h1>
-              <p className="text-xs text-gray-300">Excellence & Royalty</p>
+              <p className="text-xs text-white/60">Excellence, Innovation & Character</p>
             </div>
           </Link>
 
@@ -79,68 +79,53 @@ export default function Navbar() {
             role="search"
             aria-label="Search the Kings and Queens School website"
           >
-            <div className="mx-auto flex w-full max-w-xl items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 shadow-inner backdrop-blur-md transition focus-within:border-gold-400/70 focus-within:bg-white/14">
+            <div className="mx-auto flex w-full max-w-xl items-center rounded-full border border-white/12 bg-white/10 px-4 py-2 shadow-inner backdrop-blur-md transition focus-within:border-gold-400/70 focus-within:bg-white/14">
               <Search className="h-4 w-4 flex-shrink-0 text-gold-400" />
               <input
                 type="search"
                 value={searchQuery}
                 onChange={(event) => setSearchQuery(event.target.value)}
-                placeholder="Search admissions, academics, portal, fees..."
+                placeholder="Search classes, admissions, contacts, app..."
                 className="w-full bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/55"
                 aria-label="Search the website"
               />
-              <button
-                type="submit"
-                className="rounded-full bg-gold-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gold-600"
-              >
+              <button type="submit" className="rounded-full bg-gold-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-gold-400">
                 Search
               </button>
             </div>
           </form>
 
-          <div className="hidden lg:flex">
-            <a href={portalUrl} className="btn-gold !px-4 !py-2 text-sm" target="_blank" rel="noreferrer">
+          <div className="hidden items-center gap-3 lg:flex">
+            <Link href="/admissions" className="btn-primary !px-5 !py-3 text-sm">
+              Apply Now
+            </Link>
+            <a
+              href={portalUrl}
+              className="inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 py-3 text-sm font-semibold text-white transition hover:border-gold-400/40 hover:bg-white/14"
+              target="_blank"
+              rel="noreferrer"
+            >
               Parent Portal
+              <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
 
-          <button className="ml-auto lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+          <button className="ml-auto rounded-full border border-white/12 bg-white/10 p-2 text-white lg:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
-        <div className="hidden lg:flex items-center justify-center gap-8 border-t border-white/10 py-3">
+        <div className="hidden items-center justify-center gap-8 border-t border-white/10 py-3 lg:flex">
           {navLinks.map((link) => (
-            link.href.startsWith('http') ? (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
-                target="_blank"
-                rel="noreferrer"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
-              >
-                {link.label}
-              </Link>
-            )
+            <Link key={link.href} href={link.href} className="text-sm font-medium text-white/88 transition-colors hover:text-gold-300">
+              {link.label}
+            </Link>
           ))}
         </div>
 
         {isOpen && (
-          <div className="lg:hidden pb-4">
-            <form
-              onSubmit={handleSearchSubmit}
-              className="mb-4"
-              role="search"
-              aria-label="Search the Kings and Queens School website"
-            >
+          <div className="pb-4 lg:hidden">
+            <form onSubmit={handleSearchSubmit} className="mb-4" role="search" aria-label="Search the Kings and Queens School website">
               <div className="flex items-center rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-md">
                 <Search className="h-4 w-4 flex-shrink-0 text-gold-400" />
                 <input
@@ -156,38 +141,33 @@ export default function Navbar() {
                 </button>
               </div>
             </form>
+
             {navLinks.map((link) => (
-              link.href.startsWith('http') ? (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="block py-2 text-white hover:text-gold-400 transition-colors"
-                  target="_blank"
-                  rel="noreferrer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="block py-2 text-white hover:text-gold-400 transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              )
+              <Link
+                key={link.href}
+                href={link.href}
+                className="block rounded-xl px-3 py-3 text-white transition-colors hover:bg-white/8 hover:text-gold-300"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.label}
+              </Link>
             ))}
-            <a
-              href={portalUrl}
-              className="mt-3 inline-block bg-gold-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gold-600 transition-colors"
-              target="_blank"
-              rel="noreferrer"
-              onClick={() => setIsOpen(false)}
-            >
-              Parent Portal
-            </a>
+
+            <div className="mt-3 grid gap-3 sm:grid-cols-2">
+              <Link href="/admissions" className="btn-primary text-center" onClick={() => setIsOpen(false)}>
+                Apply Now
+              </Link>
+              <a
+                href={portalUrl}
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/14 bg-white/10 px-4 py-3 font-semibold text-white transition hover:bg-white/14"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setIsOpen(false)}
+              >
+                Parent Portal
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
           </div>
         )}
       </div>
