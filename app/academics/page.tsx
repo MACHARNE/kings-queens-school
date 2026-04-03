@@ -19,9 +19,6 @@ export default function Academics() {
           <div className="grid-overlay absolute inset-0 opacity-30" />
           <div className="container-custom relative text-center">
             <Reveal>
-              <p className="mb-4 inline-flex rounded-full border border-white/12 bg-white/10 px-5 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-gold-300 backdrop-blur">
-                Classes Landing Page
-              </p>
               <h1 className="hero-page-title">Explore Our Classes - Kings &amp; Queens School</h1>
               <p className="hero-page-subtitle mt-5">
                 Structured learning, interactive teaching, and continuous performance tracking for every stage of your child&apos;s journey.

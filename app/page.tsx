@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {
+  AlertTriangle,
   ArrowRight,
   BarChart3,
   CheckCircle2,
@@ -8,6 +9,7 @@ import {
   MonitorSmartphone,
   ShieldCheck,
   UsersRound,
+  XCircle,
 } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -65,11 +67,38 @@ const digitalHighlights = [
 const parentPoints = ['Academic excellence', 'Discipline and structure', 'Safety', 'Future success'];
 
 const comparisonRows = [
-  ['Digital Learning', 'Yes', 'No'],
-  ['Nigerian Curriculum', 'Yes', 'Yes'],
-  ['Parent Monitoring', 'Yes', 'No'],
-  ['Structured Assessment', 'Yes', 'Limited'],
+  ['Digital Learning', 'yes', 'no'],
+  ['Nigerian Curriculum', 'yes', 'yes'],
+  ['Parent Monitoring', 'yes', 'no'],
+  ['Structured Assessment', 'yes', 'limited'],
 ];
+
+function ComparisonStatus({ value }: { value: string }) {
+  if (value === 'yes') {
+    return (
+      <span className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+        <CheckCircle2 className="h-4 w-4" />
+        Yes
+      </span>
+    );
+  }
+
+  if (value === 'no') {
+    return (
+      <span className="inline-flex items-center gap-2 rounded-full bg-rose-50 px-3 py-1.5 text-sm font-semibold text-rose-700">
+        <XCircle className="h-4 w-4" />
+        No
+      </span>
+    );
+  }
+
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1.5 text-sm font-semibold text-amber-700">
+      <AlertTriangle className="h-4 w-4" />
+      Limited
+    </span>
+  );
+}
 
 export default function Home() {
   return (
@@ -286,8 +315,12 @@ export default function Home() {
                   {comparisonRows.map(([feature, ours, others], index) => (
                     <tr key={feature} className={index % 2 === 0 ? 'bg-white' : 'bg-primary-50/40'}>
                       <td className="px-6 py-4 font-semibold text-slate-900">{feature}</td>
-                      <td className="px-6 py-4 text-primary-900">{ours}</td>
-                      <td className="px-6 py-4 text-slate-500">{others}</td>
+                      <td className="px-6 py-4 text-primary-900">
+                        <ComparisonStatus value={ours} />
+                      </td>
+                      <td className="px-6 py-4 text-slate-500">
+                        <ComparisonStatus value={others} />
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -296,7 +329,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="pb-20 md:pb-28">
+        <section className="-mt-12 bg-white pb-20 md:-mt-16 md:pb-28">
           <div className="container-custom">
             <Reveal>
               <div className="relative overflow-hidden rounded-[2.25rem] px-6 py-12 text-white shadow-[0_35px_110px_rgba(15,23,42,0.2)] md:px-12 md:py-16">
