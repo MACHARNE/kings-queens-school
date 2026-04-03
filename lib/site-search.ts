@@ -101,7 +101,7 @@ export const siteSearchEntries: SearchEntry[] = [
   },
   {
     title: 'Parent Portal',
-    href: 'https://kqis-portal-158h.vercel.app/',
+    href: 'https://kqis-portal.vercel.app/',
     description: 'Open the school portal for parent access, results, communication, and school tools.',
     category: 'Portal',
     keywords: ['portal', 'parent portal', 'lms', 'results', 'school management system'],

@@ -4,7 +4,10 @@ import {
   AlertTriangle,
   ArrowRight,
   BarChart3,
+  BookOpen,
   CheckCircle2,
+  ClipboardPenLine,
+  FileText,
   GraduationCap,
   MonitorSmartphone,
   ShieldCheck,
@@ -71,6 +74,24 @@ const comparisonRows = [
   ['Nigerian Curriculum', 'yes', 'yes'],
   ['Parent Monitoring', 'yes', 'no'],
   ['Structured Assessment', 'yes', 'limited'],
+];
+
+const leadMagnets = [
+  {
+    title: 'Free Entrance Exam Guide',
+    description: 'A practical starter guide to help parents understand likely entrance expectations and prepare with confidence.',
+    icon: <BookOpen className="h-6 w-6" />,
+  },
+  {
+    title: 'Free Assessment Test',
+    description: 'A simple assessment resource families can use to check readiness and identify where extra support may be needed.',
+    icon: <ClipboardPenLine className="h-6 w-6" />,
+  },
+  {
+    title: 'How to Prepare Your Child for WAEC PDF',
+    description: 'A parent-friendly guide with smart preparation tips, revision planning ideas, and exam readiness support.',
+    icon: <FileText className="h-6 w-6" />,
+  },
 ];
 
 function ComparisonStatus({ value }: { value: string }) {
@@ -361,6 +382,40 @@ export default function Home() {
                 </div>
               </div>
             </Reveal>
+          </div>
+        </section>
+
+        <section className="bg-primary-50/60 pb-20 md:pb-24">
+          <div className="container-custom">
+            <Reveal className="text-center">
+              <p className="eyebrow justify-center">Free Parent Resources</p>
+              <h2 className="section-title">Helpful guides families can use right away.</h2>
+              <p className="section-copy mx-auto">
+                Get valuable resources designed to support school entry, academic preparation, and stronger exam readiness for your child.
+              </p>
+            </Reveal>
+
+            <Stagger className="mt-12 grid gap-6 lg:grid-cols-3">
+              {leadMagnets.map((item, index) => (
+                <StaggerItem key={item.title}>
+                  <div className={`h-full rounded-[2rem] p-7 ${index === 1 ? 'gradient-panel text-white' : 'premium-card'}`}>
+                    <div className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${index === 1 ? 'bg-gold-400/14 text-gold-300' : 'bg-primary-900 text-gold-300'}`}>
+                      {item.icon}
+                    </div>
+                    <h3 className="text-2xl font-semibold">{item.title}</h3>
+                    <p className={`mt-4 text-sm leading-7 ${index === 1 ? 'text-white/76' : 'text-slate-600'}`}>
+                      {item.description}
+                    </p>
+                    <div className="mt-8">
+                      <Link href="/contact" className={index === 1 ? 'btn-gold' : 'btn-primary'}>
+                        Request Free Copy
+                        <ArrowRight className="h-4 w-4" />
+                      </Link>
+                    </div>
+                  </div>
+                </StaggerItem>
+              ))}
+            </Stagger>
           </div>
         </section>
       </main>

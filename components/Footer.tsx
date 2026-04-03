@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
 
+const portalUrl = 'https://kqis-portal.vercel.app/';
+
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-slate-950 pt-16 pb-6 text-white">
@@ -9,7 +11,7 @@ export default function Footer() {
       <div className="absolute -right-16 bottom-8 h-56 w-56 rounded-full bg-gold-400/10 blur-3xl" />
 
       <div className="container-custom">
-        <div className="mb-12 grid gap-8 rounded-[2rem] border border-white/8 bg-white/[0.04] p-8 shadow-[0_30px_80px_rgba(2,6,23,0.35)] backdrop-blur md:grid-cols-4">
+        <div className="mb-12 grid gap-8 rounded-[2rem] border border-white/8 bg-white/[0.04] p-8 shadow-[0_30px_80px_rgba(2,6,23,0.35)] backdrop-blur lg:grid-cols-[1.3fr_0.95fr_0.95fr_1fr_1fr]">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.32em] text-gold-300">Kings & Queens School</p>
             <h3 className="font-display text-3xl font-semibold text-white">Raising Future Kings & Queens Through Excellence & Innovation</h3>
@@ -23,14 +25,25 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">Quick Links</h4>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">Sitemap</h4>
             <ul className="space-y-3 text-sm text-white/68">
               <li><Link href="/" className="transition hover:text-gold-300">Homepage</Link></li>
               <li><Link href="/about" className="transition hover:text-gold-300">About Us</Link></li>
               <li><Link href="/academics" className="transition hover:text-gold-300">Classes</Link></li>
-              <li><Link href="/online-school" className="transition hover:text-gold-300">Learning App</Link></li>
-              <li><Link href="/admissions" className="transition hover:text-gold-300">Admissions</Link></li>
+              <li><Link href="/gallery" className="transition hover:text-gold-300">Gallery</Link></li>
+              <li><Link href="/student-life" className="transition hover:text-gold-300">Student Life</Link></li>
               <li><Link href="/contact" className="transition hover:text-gold-300">Contact</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="mb-4 text-sm font-semibold uppercase tracking-[0.24em] text-white/55">Admissions</h4>
+            <ul className="space-y-3 text-sm text-white/68">
+              <li><Link href="/admissions" className="transition hover:text-gold-300">Admissions</Link></li>
+              <li><Link href="/admissions/apply-now" className="transition hover:text-gold-300">Apply Now</Link></li>
+              <li><Link href="/admissions/entrance-process" className="transition hover:text-gold-300">Entrance Process</Link></li>
+              <li><Link href="/admissions/fees-payment" className="transition hover:text-gold-300">Fees & Payment</Link></li>
+              <li><a href={portalUrl} className="transition hover:text-gold-300" target="_blank" rel="noreferrer">Parent Portal</a></li>
             </ul>
           </div>
 

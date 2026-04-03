@@ -4,6 +4,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
 
+const portalUrl = 'https://kqis-portal.vercel.app/';
+
 const features = [
   {
     icon: <BarChart3 className="w-8 h-8" />,
@@ -67,6 +69,7 @@ export default function ParentPortalPage() {
                 Parents who would like to request access details, login support, or information about the school&apos;s digital systems can reach us directly.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
+                <a href={portalUrl} target="_blank" rel="noreferrer" className="btn-gold text-center">Open Parent Portal</a>
                 <Link href="/contact" className="btn-gold text-center">Contact the School</Link>
                 <Link href="/admissions" className="btn-secondary text-center">Explore Admissions</Link>
               </div>

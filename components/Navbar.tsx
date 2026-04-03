@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const portalUrl = 'https://kqis-portal-158h.vercel.app/';
+  const portalUrl = 'https://kqis-portal.vercel.app/';
   const router = useRouter();
 
   const syncScrollState = useEffectEvent(() => {
