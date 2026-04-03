@@ -66,10 +66,21 @@ export default function VideoHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-              Raising Future Kings & Queens Through Excellence, Innovation & Character
+            <h1
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
+              style={{ textShadow: '0 2px 0 rgba(0,0,0,0.55), 0 10px 24px rgba(0,0,0,0.72)' }}
+            >
+              Raising Future{' '}
+              <span className="text-gold-400">Kings</span> &{' '}
+              <span className="text-primary-200">Queens</span> Through{' '}
+              <span className="bg-gradient-to-r from-gold-400 via-white to-primary-200 bg-clip-text text-transparent">
+                Excellence, Innovation & Character
+              </span>
             </h1>
-            <p className="text-lg md:text-2xl mb-10 max-w-3xl text-white/88">
+            <p
+              className="text-lg md:text-2xl mb-10 max-w-3xl text-white/88"
+              style={{ textShadow: '0 1px 0 rgba(0,0,0,0.5), 0 6px 16px rgba(0,0,0,0.7)' }}
+            >
               At Kings and Queens School, we combine the strength of the Nigerian curriculum with modern digital learning systems inspired by global platforms and leading online schools.
             </p>
           </motion.div>

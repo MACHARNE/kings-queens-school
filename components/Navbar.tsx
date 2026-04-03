@@ -22,10 +22,13 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/academics', label: 'Academics' },
+    { href: '/academics/examinations', label: 'Examinations' },
     { href: '/digital-learning', label: 'Digital Learning' },
+    { href: '/online-school', label: 'Online School' },
+    { href: '/student-life', label: 'Student Life' },
     { href: '/admissions', label: 'Admissions' },
+    { href: '/parent-portal', label: 'Portals' },
     { href: '/gallery', label: 'Gallery' },
-    { href: '/blog', label: 'Learning Hub' },
     { href: '/contact', label: 'Contact Us' },
   ];
 
@@ -65,27 +68,52 @@ export default function Navbar() {
 
         <div className="hidden lg:flex items-center justify-center gap-8 border-t border-white/10 py-3">
           {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
-            >
-              {link.label}
-            </Link>
+            link.href.startsWith('http') ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-white hover:text-gold-400 transition-colors font-medium text-sm"
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </div>
 
         {isOpen && (
           <div className="lg:hidden pb-4">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="block py-2 text-white hover:text-gold-400 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.label}
-              </Link>
+              link.href.startsWith('http') ? (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block py-2 text-white hover:text-gold-400 transition-colors"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="block py-2 text-white hover:text-gold-400 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
             <Link
               href="/parent-portal"

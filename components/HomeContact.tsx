@@ -15,7 +15,7 @@ export default function HomeContact() {
                 <p>
                   Kings and Queens School
                   <br />
-                  85 Uwalaka Street
+                  88 Uwalaka Street
                   <br />
                   Umuahia, Abia State
                   <br />
@@ -28,7 +28,15 @@ export default function HomeContact() {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-gold-400" />
-                <p>[Insert Email]</p>
+                <p>kingsandqueens_schools@yahoo.com</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-gold-400" />
+                <p>nnaukwu_kaluo@yahoo.com</p>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-5 w-5 text-gold-400" />
+                <p>info@kings-queens-school.com</p>
               </div>
             </div>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">

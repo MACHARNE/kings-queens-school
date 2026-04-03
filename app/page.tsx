@@ -5,7 +5,6 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import Programs from '@/components/Programs';
 import DigitalAdvantage from '@/components/DigitalAdvantage';
 import ParentTrust from '@/components/ParentTrust';
-import HomeContact from '@/components/HomeContact';
 import ComparisonTable from '@/components/ComparisonTable';
 import CountdownBanner from '@/components/CountdownBanner';
 import Testimonials from '@/components/Testimonials';
@@ -24,7 +23,6 @@ export default function Home() {
       <Programs />
       <DigitalAdvantage />
       <ParentTrust />
-      <HomeContact />
       <ComparisonTable />
       <Testimonials />
       <CountdownBanner />

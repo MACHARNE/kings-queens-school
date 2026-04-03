@@ -7,18 +7,8 @@ import { Reveal } from '@/components/Reveal';
 function getNextAdmissionTermDate() {
   const now = new Date();
   const year = now.getFullYear();
-  const termStarts = [
-    { label: 'Third Term', date: new Date(year, 3, 1) },
-    { label: 'First Term', date: new Date(year, 8, 1) },
-    { label: 'Second Term', date: new Date(year + 1, 0, 1) },
-  ];
-
-  const next = termStarts.find((term) => term.date.getTime() > now.getTime()) ?? {
-    label: 'First Term',
-    date: new Date(year + 1, 8, 1),
-  };
-
-  return next;
+  const termStarts = [new Date(year, 3, 1), new Date(year, 8, 1), new Date(year + 1, 0, 1)];
+  return termStarts.find((termDate) => termDate.getTime() > now.getTime()) ?? new Date(year + 1, 8, 1);
 }
 
 function getRemaining(targetDate: Date) {
@@ -28,18 +18,19 @@ function getRemaining(targetDate: Date) {
   const days = Math.floor(diff / (1000 * 60 * 60 * 24));
   const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
   const minutes = Math.floor((diff / (1000 * 60)) % 60);
+  const seconds = Math.floor((diff / 1000) % 60);
 
-  return { days, hours, minutes };
+  return { days, hours, minutes, seconds };
 }
 
 export default function CountdownBanner() {
   const nextTerm = useMemo(() => getNextAdmissionTermDate(), []);
-  const [remaining, setRemaining] = useState(() => getRemaining(nextTerm.date));
+  const [remaining, setRemaining] = useState(() => getRemaining(nextTerm));
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setRemaining(getRemaining(nextTerm.date));
-    }, 60000);
+      setRemaining(getRemaining(nextTerm));
+    }, 1000);
 
     return () => clearInterval(timer);
   }, [nextTerm]);
@@ -48,6 +39,7 @@ export default function CountdownBanner() {
     { label: 'Days', value: remaining.days },
     { label: 'Hours', value: remaining.hours },
     { label: 'Minutes', value: remaining.minutes },
+    { label: 'Seconds', value: remaining.seconds },
   ];
 
   return (
@@ -58,7 +50,7 @@ export default function CountdownBanner() {
             <div>
               <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-gold-400">
                 <Clock3 className="h-4 w-4" />
-                {nextTerm.label}
+                Admission Countdown
               </div>
               <h2 className="text-2xl font-bold md:text-3xl">Limited Admission Slots Available</h2>
             </div>
