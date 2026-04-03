@@ -3,11 +3,19 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { Menu, Search, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const portalUrl = 'https://kqis-portal-158h.vercel.app/';
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(() =>
+    pathname === '/search' ? searchParams.get('q') ?? '' : ''
+  );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,15 +35,29 @@ export default function Navbar() {
     { href: '/online-school', label: 'Online School' },
     { href: '/student-life', label: 'Student Life' },
     { href: '/admissions', label: 'Admissions' },
-    { href: '/parent-portal', label: 'Portals' },
+    { href: portalUrl, label: 'Portals' },
     { href: '/gallery', label: 'Gallery' },
     { href: '/contact', label: 'Contact Us' },
   ];
 
+  const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const trimmedQuery = searchQuery.trim();
+
+    if (!trimmedQuery) {
+      router.push('/search');
+    } else {
+      router.push(`/search?q=${encodeURIComponent(trimmedQuery)}`);
+    }
+
+    setIsOpen(false);
+  };
+
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-primary-900 shadow-lg' : 'bg-primary-900/95'}`}>
       <div className="container-custom">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex items-center gap-4 py-4">
           <Link href="/" className="flex items-center gap-2">
             <div className="rounded-2xl bg-white/95 p-1.5 shadow-md ring-1 ring-white/20">
               <Image
@@ -55,13 +77,38 @@ export default function Navbar() {
             </div>
           </Link>
 
+          <form
+            onSubmit={handleSearchSubmit}
+            className="hidden flex-1 lg:flex"
+            role="search"
+            aria-label="Search the Kings and Queens School website"
+          >
+            <div className="mx-auto flex w-full max-w-xl items-center rounded-full border border-white/15 bg-white/10 px-4 py-2 shadow-inner backdrop-blur-md transition focus-within:border-gold-400/70 focus-within:bg-white/14">
+              <Search className="h-4 w-4 flex-shrink-0 text-gold-400" />
+              <input
+                type="search"
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder="Search admissions, academics, portal, fees..."
+                className="w-full bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/55"
+                aria-label="Search the website"
+              />
+              <button
+                type="submit"
+                className="rounded-full bg-gold-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-gold-600"
+              >
+                Search
+              </button>
+            </div>
+          </form>
+
           <div className="hidden lg:flex">
-            <Link href="/parent-portal" className="btn-gold !px-4 !py-2 text-sm">
+            <a href={portalUrl} className="btn-gold !px-4 !py-2 text-sm" target="_blank" rel="noreferrer">
               Parent Portal
-            </Link>
+            </a>
           </div>
 
-          <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
+          <button className="ml-auto lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -92,6 +139,27 @@ export default function Navbar() {
 
         {isOpen && (
           <div className="lg:hidden pb-4">
+            <form
+              onSubmit={handleSearchSubmit}
+              className="mb-4"
+              role="search"
+              aria-label="Search the Kings and Queens School website"
+            >
+              <div className="flex items-center rounded-2xl border border-white/15 bg-white/10 px-4 py-3 backdrop-blur-md">
+                <Search className="h-4 w-4 flex-shrink-0 text-gold-400" />
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(event) => setSearchQuery(event.target.value)}
+                  placeholder="Search the website"
+                  className="w-full bg-transparent px-3 text-sm text-white outline-none placeholder:text-white/55"
+                  aria-label="Search the website"
+                />
+                <button type="submit" className="text-sm font-semibold text-gold-400">
+                  Go
+                </button>
+              </div>
+            </form>
             {navLinks.map((link) => (
               link.href.startsWith('http') ? (
                 <a
@@ -115,13 +183,15 @@ export default function Navbar() {
                 </Link>
               )
             ))}
-            <Link
-              href="/parent-portal"
+            <a
+              href={portalUrl}
               className="mt-3 inline-block bg-gold-500 text-white px-4 py-2 rounded-lg font-semibold hover:bg-gold-600 transition-colors"
+              target="_blank"
+              rel="noreferrer"
               onClick={() => setIsOpen(false)}
             >
               Parent Portal
-            </Link>
+            </a>
           </div>
         )}
       </div>
