@@ -1,15 +1,16 @@
-'use client';
-
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { ArrowUpRight, Search, Sparkles } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { searchSite, siteSearchEntries } from '@/lib/site-search';
 
-export default function SearchPage() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get('q')?.trim() ?? '';
+type SearchPageProps = {
+  searchParams: Promise<{ q?: string }>;
+};
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const params = await searchParams;
+  const query = params.q?.trim() ?? '';
   const results = query ? searchSite(query) : siteSearchEntries;
 
   return (

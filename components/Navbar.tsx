@@ -3,19 +3,15 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import { Menu, Search, X } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const portalUrl = 'https://kqis-portal-158h.vercel.app/';
   const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const [searchQuery, setSearchQuery] = useState(() =>
-    pathname === '/search' ? searchParams.get('q') ?? '' : ''
-  );
 
   useEffect(() => {
     const handleScroll = () => {
