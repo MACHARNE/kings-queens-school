@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Clock3 } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 
@@ -24,16 +24,27 @@ function getRemaining(targetDate: Date) {
 }
 
 export default function CountdownBanner() {
-  const nextTerm = useMemo(() => getNextAdmissionTermDate(), []);
-  const [remaining, setRemaining] = useState(() => getRemaining(nextTerm));
+  const [remaining, setRemaining] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    const updateRemaining = () => {
+      const nextTerm = getNextAdmissionTermDate();
       setRemaining(getRemaining(nextTerm));
+    };
+
+    updateRemaining();
+
+    const timer = setInterval(() => {
+      updateRemaining();
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [nextTerm]);
+  }, []);
 
   const items = [
     { label: 'Days', value: remaining.days },
