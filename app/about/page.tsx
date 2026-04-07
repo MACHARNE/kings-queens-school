@@ -7,36 +7,38 @@ import { Reveal, Stagger, StaggerItem } from '@/components/Reveal';
 const leadershipTeam = [
   {
     name: 'Dr. Nnaukwu Kalu Okwuagwu',
-    role: 'Founder & Proprietor',
-    image: '/images/Dr. Nnaukwu Kalu Okwuagwu.founder and proprietor.jpg',
+    role: 'CEO',
+    image: '/images/Meet Our Board and Management Team. Dr. Nnaukwu Kalu Okwuagwu CEO.jpg',
   },
   {
     name: 'Mrs. Rose Nnaukwu Kalu',
     role: 'Executive Director',
-    image: '/images/Mrs. Rose Nnaukwu Kalu  Executive Director.jpg',
+    image: '/images/Meet Our Board and Management Team. Mrs. Rose Nnaukwu Kalu  Executive Director.jpg',
   },
   {
     name: 'Mrs. Peace Chioma Ikpe',
-    role: 'Director, Finance',
-    image: '/images/Mrs. Peace Chioma Ikpe. Director, Finance..jpg',
+    role: 'Finance Director',
+    image: '/images/Meet Our Board and Management Team. Mrs. Peace Chioma Ikpe. Finance Director..jpg',
   },
   {
     name: 'Queen Chinyere Nnaukwu-Kalu Nkwocha',
     role: 'Director, Human Resources',
-    image: '/images/Queen Chinyere Nnaukwu-Kalu Nkwocha..jpg',
+    image: '/images/Meet Our Board and Management Team. Queen Chinyere Nnaukwu-Kalu Nkwocha. Director Human Resources.jpg',
   },
   {
-    name: 'Favour Kelechi Kalu',
-    role: 'Head Mistress',
-    image: '/images/Favour Kelechi Kalu. head mistress.jpg',
+    name: 'Mrs. Favour Kelechi Kalu',
+    role: 'Head Mistress, Rona Kings and Queens Nursery/Primary School',
+    image: '/images/Meet Our Board and Management Team. Mrs Favour Kelechi kalu. head mistress Rona kings and queens Nursery and primary.jpg',
   },
   {
     name: 'Mrs. Orji Caroline',
     role: 'Principal',
+    image: '/images/Meet Our Board and Management Team. Mrs. Orji Caroline. Principal.png',
   },
   {
-    name: 'Kelechi Kalu',
+    name: 'Christian Kelechi Kalu',
     role: 'Executive Director',
+    image: '/images/Meet Our Board and Management Team. Christian Kelechi kalu. Executive Director..png',
   },
 ];
 
@@ -159,18 +161,24 @@ export default function About() {
         <section id="leadership" className="py-20 md:py-24">
           <div className="container-custom">
             <Reveal className="text-center">
-              <p className="eyebrow justify-center">Our Team / Board of Directors</p>
-              <h2 className="section-title">Leadership guiding the Kings &amp; Queens vision.</h2>
+              <p className="eyebrow justify-center">Meet Our Board and Management Team.</p>
+              <h2 className="section-title">Meet Our Board and Management Team.</h2>
             </Reveal>
 
             <Stagger className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {leadershipTeam.map((leader) => (
+              {leadershipTeam.map((leader, index) => (
                 <StaggerItem key={leader.name}>
                   <div className="premium-card h-full overflow-hidden rounded-[2rem]">
                     {leader.image ? (
-                      <div className="relative aspect-[4/4.5] overflow-hidden">
-                        <Image src={leader.image} alt={leader.name} fill className="object-cover transition duration-700 hover:scale-105" />
-                      </div>
+                      <Reveal
+                        direction={index % 2 === 0 ? 'up' : 'scale'}
+                        delay={0.06 * (index % 3)}
+                        duration={0.9}
+                      >
+                        <div className="relative aspect-[4/4.5] overflow-hidden">
+                          <Image src={leader.image} alt={leader.name} fill className="object-cover transition duration-700 hover:scale-105" />
+                        </div>
+                      </Reveal>
                     ) : (
                       <div className="gradient-panel flex aspect-[4/4.5] items-center justify-center">
                         <div className="flex h-28 w-28 items-center justify-center rounded-full border border-white/12 bg-white/8 text-4xl font-semibold text-gold-300">
